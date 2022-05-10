@@ -1,3 +1,4 @@
 {
-    "*": "npm run husky"
+    "*": "npm run prettier:write",
+    "*.js": "npm prettier:write && npm run eslint"
 }
