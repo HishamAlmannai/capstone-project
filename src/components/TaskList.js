@@ -1,3 +1,6 @@
+import React from 'react';
+import Task from './Task';
+
 export default function TaskList() {
 	const data = [
 		{ id: 1, name: 'The tasks are displayed, labeled by "ToDo:"', done: true },
@@ -12,14 +15,10 @@ export default function TaskList() {
 	];
 
 	return (
-		<>
+		<ul>
 			{data.map(task => (
-				<div key={task.id}>
-					<input type="checkbox" id="done" name="done" checked={task.done} />
-					<label>{task.name}</label>
-					<hr />
-				</div>
+				<Task key={task.id} props={task} />
 			))}
-		</>
+		</ul>
 	);
 }
