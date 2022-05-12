@@ -1,5 +1,5 @@
 import TaskList from '../src/components/TaskList';
-import { GlobalStyle } from '../styles/GlobalStyle';
+import GlobalStyle from '../styles/GlobalStyle';
 
 export default function Home() {
 	return (
