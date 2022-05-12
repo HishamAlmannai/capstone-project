@@ -1,11 +1,6 @@
 import React from 'react';
 import Task from '../components/Task';
 
-export default {
-	title: 'Task',
-	component: Task,
-};
-
 const props = {
 	props: {
 		id: 5,
@@ -14,9 +9,8 @@ const props = {
 	},
 };
 
+export default props;
+
 export function Default() {
-	return <Task {...props} />;
-}
-export function Checked() {
 	return <Task {...props} />;
 }
