@@ -9,8 +9,13 @@ describe('Task', () => {
 				props={{ id: 1, name: 'The tasks are displayed, labeled by "ToDo:"', done: true }}
 			/>
 		);
+
+		const citem = screen.getByRole('checkbox');
+		const litem = screen.getByRole('listitem');
+		const test = screen.queryByText(/The tasks are displayed, labeled by "ToDo:"/i);
+
+		expect(citem).toBeInTheDocument();
+		expect(litem).toBeInTheDocument();
+		expect(test).toBeInTheDocument();
 	});
-	const test = screen.queryByText(/The tasks are displayed, labeled by "ToDo:"/i);
-	//console.log(test);
-	expect(test).toBeInTheDocument();
 });

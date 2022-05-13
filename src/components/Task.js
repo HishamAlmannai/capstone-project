@@ -1,13 +1,13 @@
 import React from 'react';
-import TaskStyled from '../../styles/Task.styled';
+import StyledListItem from '../../styles/ListItem.styled';
 import Checkbox from './Checkbox';
 
 export default function Task({ props }) {
 	return (
-		<TaskStyled>
-			<Checkbox props={props} />
-			<label>{props.name}</label>
+		<StyledListItem role="listitem">
+			<Checkbox role="checkbox" props={props} />
+			<span>{props.name}</span>
 			<hr />
-		</TaskStyled>
+		</StyledListItem>
 	);
 }
