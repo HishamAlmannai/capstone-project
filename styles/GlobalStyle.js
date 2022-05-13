@@ -8,11 +8,11 @@ const GlobalStyle = createGlobalStyle`
 		Fira Sans, Droid Sans, Helvetica Neue, sans-serif; 
  }
 
-html {
+ html {
     
     display: flex;
     justify-content: center;
-  };
+  }; 
 `;
 
 export default GlobalStyle;
