@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import TaskList from './TaskList';
 
 describe('TaskList', () => {
-	it('renders a tasks and checkboxes', () => {
+	it('renders five tasks and five checkboxes', () => {
 		render(
 			<TaskList
 				props={[
@@ -22,6 +22,6 @@ describe('TaskList', () => {
 
 		const litem = screen.getAllByRole('listitem');
 
-		expect(litem.length) === 5;
+		expect(litem).toHaveLength(5);
 	});
 });
