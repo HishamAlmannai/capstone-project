@@ -1,5 +1,5 @@
 import React from 'react';
-import Task from './Task';
+import Task from '../Task/Task';
 
 const data = [
 	{ id: 1, name: 'The tasks are displayed, labeled by "ToDo:"', done: true },
