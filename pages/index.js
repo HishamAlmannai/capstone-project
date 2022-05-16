@@ -1,5 +1,4 @@
-import Button from '../src/components/Button/Button';
-import Input from '../src/components/Input/Input';
+import Form from '../src/components/Form/Form';
 import TaskList from '../src/components/TaskList/TaskList';
 import GlobalStyle from '../styles/GlobalStyle';
 
@@ -9,8 +8,7 @@ export default function Home() {
 			<GlobalStyle />
 			<h1>ToDo</h1>
 			<TaskList />
-			<Input />
-			<Button />
+			<Form />
 		</>
 	);
 }

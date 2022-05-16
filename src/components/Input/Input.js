@@ -7,6 +7,7 @@ export default function Input() {
 
 	return (
 		<input
+			required
 			type="text"
 			name="input"
 			placeholder="Stop Starting > Start finishing"
