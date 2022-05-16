@@ -7,7 +7,7 @@ export default function Button() {
 
 	return (
 		<button
-			type="button"
+			type="submit"
 			name="Button"
 			value={inputValue}
 			onClick={event => {

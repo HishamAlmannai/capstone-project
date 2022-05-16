@@ -3,10 +3,7 @@ import Button from '../Button/Button';
 import Input from '../Input/Input';
 
 export default function Form() {
-	function onSubmit() {
-		//event.preventDefault();
-		console.log('§');
-	}
+	function onSubmit() {}
 
 	return (
 		<form onSubmit={onSubmit()}>
