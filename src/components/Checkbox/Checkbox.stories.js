@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkbox from './Checkbox';
+import Checkbox from '../Checkbox/Checkbox';
 
 const props = {
 	props: {
@@ -12,6 +12,8 @@ const propsTrue = {
 		done: true,
 	},
 };
+
+export default props;
 
 export function Default() {
 	return <Checkbox {...props} />;
