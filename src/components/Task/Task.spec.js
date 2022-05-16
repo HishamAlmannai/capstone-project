@@ -6,7 +6,7 @@ describe('Task', () => {
 	it('renders a task and checkbox', () => {
 		render(
 			<Task
-				props={{ id: 1, name: 'The tasks are displayed, labeled by "ToDo:"', done: true }}
+				task={{ id: 1, name: 'The tasks are displayed, labeled by "ToDo:"', done: true }}
 			/>
 		);
 

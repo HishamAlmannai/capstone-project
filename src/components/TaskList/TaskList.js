@@ -17,7 +17,7 @@ export default function TaskList() {
 	return (
 		<ul>
 			{data.map(task => (
-				<Task key={task.id} props={task} />
+				<Task key={task.id} task={task} />
 			))}
 		</ul>
 	);

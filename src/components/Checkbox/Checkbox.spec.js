@@ -4,7 +4,7 @@ import Checkbox from './Checkbox';
 
 describe('Checkbox', () => {
 	it('renders a checkbox', () => {
-		render(<Checkbox props={{ done: false }} />);
+		render(<Checkbox task={{ done: false }} />);
 
 		let cItem = screen.getByRole('checkbox');
 
