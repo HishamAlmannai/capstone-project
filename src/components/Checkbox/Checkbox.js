@@ -8,6 +8,7 @@ export default function Checkbox({ props }) {
 	return (
 		<StyledCheckbox
 			type="checkbox"
+			name="checkbox"
 			checked={checkedValue}
 			onChange={() => {
 				setCheckedValue(!checkedValue);
