@@ -1,11 +1,12 @@
 import React from 'react';
 import Task from '../Task/Task';
-import { data } from '../../lib/data';
+import useStore from '../../services/useStore';
 
 export default function TaskList() {
+	const tasks = useStore(state => state.tasks);
 	return (
 		<ul>
-			{data.map(task => (
+			{tasks.map(task => (
 				<Task key={task.id} task={task} />
 			))}
 		</ul>

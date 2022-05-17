@@ -1,4 +1,3 @@
-//import GlobalStyle from '../styles/GlobalStyle';
 import useStore from '../src/services/useStore';
 import Form from '../src/components/Form/Form';
 import TaskList from '../src/components/TaskList/TaskList';

@@ -1,20 +1,15 @@
 import React from 'react';
 
-import { useState } from 'react';
-
-export default function Button() {
-	const [inputValue, setInputValue] = useState('');
-
+export default function Button(props) {
 	return (
 		<button
 			type="submit"
 			name="Button"
-			value={inputValue}
-			onClick={event => {
-				setInputValue(event.target.value);
+			onClick={() => {
+				props.handleSubmit;
 			}}
 		>
-			Save
+			{props.buttonText}
 		</button>
 	);
 }
