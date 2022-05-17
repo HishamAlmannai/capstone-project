@@ -20,7 +20,10 @@ export default function Form() {
 		>
 			<label>Create</label>
 			<input
+				required
 				type="text"
+				minLength="2"
+				maxLength="200"
 				name="input"
 				placeholder="Stop Starting > Start finishing"
 				value={inputValue}
