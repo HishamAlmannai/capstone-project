@@ -1,5 +1,5 @@
 import create from 'zustand';
-
+import nanoid from 'nanoid';
 import { data } from '../lib/data';
 
 const useStore = create(set => ({
@@ -7,7 +7,7 @@ const useStore = create(set => ({
 	addTask: task => {
 		set(state => {
 			return {
-				tasks: [{ id: '5', name: task, done: false }, ...state.tasks],
+				tasks: [{ id: nanoid, name: task, done: false }, ...state.tasks],
 			};
 		});
 	},
