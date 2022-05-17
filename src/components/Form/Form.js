@@ -18,7 +18,6 @@ export default function Form() {
 
 	return (
 		<form
-			name="xy"
 			onSubmit={event => {
 				onSubmit(inputValue, event);
 			}}
