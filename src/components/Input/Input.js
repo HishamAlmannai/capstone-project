@@ -7,7 +7,7 @@ export default function Input(props) {
 	return (
 		<input
 			required
-			type={props.text}
+			type={props.type}
 			name={props.name}
 			placeholder={props.placeholder}
 			value={inputValue}
