@@ -5,9 +5,13 @@ import Button from '../Button/Button';
 export default function Form() {
 	const [inputValue, setInputValue] = useState('');
 	const addTask = useStore(state => state.addTask);
+	const tasks = useStore(state => state.tasks);
 
 	function onSubmit(inputValue, event) {
 		event.preventDefault();
+		if (tasks.some(task => task.name === inputValue)) {
+			return window.confirm('task already exists');
+		}
 		addTask(inputValue);
 		setInputValue('');
 	}
