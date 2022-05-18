@@ -18,11 +18,11 @@ export default function Form() {
 
 	return (
 		<form
+			name="form"
 			onSubmit={event => {
 				onSubmit(inputValue, event);
 			}}
 		>
-			<label>Create</label>
 			<input
 				required
 				type="text"
