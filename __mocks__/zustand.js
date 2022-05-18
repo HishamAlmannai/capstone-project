@@ -8,6 +8,33 @@ const storeResetFns = new Set();
 const create = createState => {
 	const store = actualCreate(createState);
 	const initialState = store.getState();
+	initialState.tasks = [
+		{
+			id: '1k3Ipsv5gtPHkap5qKWjW',
+			name: 'The tasks are displayed, labeled by "ToDo:"',
+			done: true,
+		},
+		{
+			id: 'mIEC9lux_nZFSyZtSYC4i',
+			name: 'If a task has already been done, the checkbox should be checked',
+			done: false,
+		},
+		{
+			id: '7DlndN0gxK3AK3VX05HAK',
+			name: 'Each task should be visually separated',
+			done: true,
+		},
+		{
+			id: '0FVYm7d3-qt1bqAdovh_Q',
+			name: "Each task should display it's own checkbox",
+			done: true,
+		},
+		{
+			id: 'WDbiF04kNMVzBE9L8Ljjg',
+			name: 'All tasks should be displayed in vertical order',
+			done: true,
+		},
+	];
 	storeResetFns.add(() => store.setState(initialState, true));
 	return store;
 };

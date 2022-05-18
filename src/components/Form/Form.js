@@ -10,10 +10,11 @@ export default function Form() {
 	function onSubmit(inputValue, event) {
 		event.preventDefault();
 		if (tasks.some(task => task.name === inputValue)) {
-			return window.confirm('Task already in the list');
+			window.confirm('Task already in the list');
+		} else {
+			addTask(inputValue);
+			setInputValue('');
 		}
-		addTask(inputValue);
-		setInputValue('');
 	}
 
 	return (

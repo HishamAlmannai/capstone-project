@@ -1,9 +1,10 @@
 import React from 'react';
-import Task from '../Task/Task';
 import useStore from '../../services/useStore';
+import Task from '../Task/Task';
 
 export default function TaskList() {
 	const tasks = useStore(state => state.tasks);
+
 	return (
 		<ul>
 			{tasks.map(task => (

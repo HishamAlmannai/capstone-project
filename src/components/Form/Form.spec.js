@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Home from '../../../pages';
+import TaskList from '../TaskList/TaskList';
 import Form from './Form';
 
 describe('Form', () => {
@@ -30,11 +31,18 @@ describe('Form', () => {
 		expect(nTask).toBeInTheDocument();
 	});
 	it('submits form data and adds it in list', () => {
-		render(<Home />);
+		render(
+			<>
+				<Form />
+				<TaskList />
+			</>
+		);
 
 		const iItem = screen.getByRole('textbox');
 		const bItem = screen.getByRole('button');
 		const nText = 'wasd';
+		const lItem = screen.getAllByRole('listitem');
+		const lCount = lItem.length;
 
 		userEvent.type(iItem, nText);
 		userEvent.click(bItem);
@@ -42,13 +50,16 @@ describe('Form', () => {
 		const nTask = screen.getByText(nText);
 		expect(nTask).toBeInTheDocument();
 
-		const litem = screen.getAllByRole('listitem');
-		expect(litem).toHaveLength(6);
+		const nlItem = screen.getAllByRole('listitem');
+		expect(nlItem).toHaveLength(lCount + 1);
 	});
 	it('submits form data with no string', () => {
-		render(<Form />);
+		const { container } = render(<Form />);
+		const foo = container.querySelector('input:invalid');
+		console.log(foo);
 		const bItem = screen.getByRole('button');
 		userEvent.click(bItem);
-		screen.debug();
+		const bar = container.querySelector('input:invalid');
+		console.log(bar);
 	});
 });
