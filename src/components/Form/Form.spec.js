@@ -38,19 +38,26 @@ describe('Form', () => {
 			</>
 		);
 
-		const iItem = screen.getByRole('textbox');
+		const inputItem = screen.getByRole('textbox');
 		const buttonItem = screen.getByRole('button', { name: /save/i });
-		const nText = 'wasd';
-		const lItem = screen.getAllByRole('listitem');
-		const lCount = lItem.length;
+		const newText = 'wasd';
+		const listItems = screen.getAllByRole('listitem');
+		const listCount = listItems.length;
 
-		userEvent.type(iItem, nText);
+		userEvent.type(inputItem, newText);
 		userEvent.click(buttonItem);
 
-		const nTask = screen.getByText(nText);
-		expect(nTask).toBeInTheDocument();
+		const newTask = screen.getByText(newText);
+		expect(newTask).toBeInTheDocument();
 
-		const nlItem = screen.getAllByRole('listitem');
-		expect(nlItem).toHaveLength(lCount + 1);
+		const newListItem = screen.getAllByRole('listitem');
+		expect(newListItem).toHaveLength(listCount + 1);
+	});
+	it('submits form data with no string', () => {
+		const { container } = render(<Form />);
+		const submitButton = screen.getByRole('button');
+		userEvent.click(submitButton);
+		const inputAfter = container.querySelector('input:invalid');
+		expect(inputAfter).toBeTruthy();
 	});
 });
