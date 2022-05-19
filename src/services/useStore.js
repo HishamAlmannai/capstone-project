@@ -22,6 +22,13 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	deleteTask: id => {
+		set(state => {
+			return {
+				tasks: state.tasks.filter(dask => dask.id !== id),
+			};
+		});
+	},
 }));
 
 export default useStore;

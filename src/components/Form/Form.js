@@ -36,7 +36,7 @@ export default function Form() {
 					setInputValue(event.target.value);
 				}}
 			/>
-			<Button handleSubmit="handleSubmit" buttonText="Save" />
+			<Button type="submit">Save</Button>
 		</form>
 	);
 }
