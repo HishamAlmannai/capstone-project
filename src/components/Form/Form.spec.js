@@ -21,7 +21,7 @@ describe('Form', () => {
 		render(<Home />);
 
 		const iItem = screen.getByRole('textbox');
-		const bItem = screen.getByRole('button');
+		const bItem = screen.getByRole('button', { name: /save/i });
 		const nText = 'wasd';
 
 		userEvent.type(iItem, nText);
@@ -39,13 +39,13 @@ describe('Form', () => {
 		);
 
 		const iItem = screen.getByRole('textbox');
-		const bItem = screen.getByRole('button');
+		const buttonItem = screen.getByRole('button', { name: /save/i });
 		const nText = 'wasd';
 		const lItem = screen.getAllByRole('listitem');
 		const lCount = lItem.length;
 
 		userEvent.type(iItem, nText);
-		userEvent.click(bItem);
+		userEvent.click(buttonItem);
 
 		const nTask = screen.getByText(nText);
 		expect(nTask).toBeInTheDocument();
