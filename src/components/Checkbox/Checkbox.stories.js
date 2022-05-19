@@ -1,23 +1,13 @@
 import React from 'react';
-import Checkbox from '../Checkbox/Checkbox';
+import Checkbox from './Checkbox';
 
-const props = {
-	props: {
-		done: false,
-	},
+export default {
+	title: 'components/checkbox',
 };
-
-const propsTrue = {
-	props: {
-		done: true,
-	},
-};
-
-export default props;
 
 export function Default() {
-	return <Checkbox {...props} />;
+	return <Checkbox task={{ done: false }} />;
 }
 export function checked() {
-	return <Checkbox {...propsTrue} />;
+	return <Checkbox task={{ done: true }} />;
 }

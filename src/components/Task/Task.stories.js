@@ -1,15 +1,17 @@
 import React from 'react';
-import Task from '../Task/Task';
+import Task from './Task';
 
 const props = {
-	props: {
+	task: {
 		id: 5,
 		name: 'All tasks should be displayed in vertical order',
 		done: true,
 	},
 };
 
-export default props;
+export default {
+	title: 'components/Task',
+};
 
 export function Default() {
 	return <Task {...props} />;

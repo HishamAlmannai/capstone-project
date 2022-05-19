@@ -1,23 +1,14 @@
 import React from 'react';
+import useStore from '../../services/useStore';
 import Task from '../Task/Task';
 
-const data = [
-	{ id: 1, name: 'The tasks are displayed, labeled by "ToDo:"', done: true },
-	{
-		id: 2,
-		name: 'If a task has already been done, the checkbox should be checked',
-		done: false,
-	},
-	{ id: 3, name: 'Each task should be visually separated', done: true },
-	{ id: 4, name: "Each task should display it's own checkbox", done: true },
-	{ id: 5, name: 'All tasks should be displayed in vertical order', done: true },
-];
-
 export default function TaskList() {
+	const tasks = useStore(state => state.tasks);
+
 	return (
 		<ul>
-			{data.map(task => (
-				<Task key={task.id} props={task} />
+			{tasks.map(task => (
+				<Task key={task.id} task={task} />
 			))}
 		</ul>
 	);
