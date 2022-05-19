@@ -1,6 +1,7 @@
+import React from 'react';
 import { userEvent } from '@storybook/testing-library';
-import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import TaskList from './TaskList';
 
 describe('TaskList', () => {
@@ -19,6 +20,21 @@ describe('TaskList', () => {
 
 		const buttonItem = screen.getAllByRole('button', { name: /delete/i });
 		userEvent.click(buttonItem[0]);
+
+		const listItemAfter = screen.getAllByRole('listitem');
+		expect(listItemAfter).toHaveLength(4);
+	});
+	it('renders five tasks and removes one and restarts the browser', () => {
+		render(<TaskList />);
+
+		const listItemBefore = screen.getAllByRole('listitem');
+		expect(listItemBefore).toHaveLength(5);
+
+		const buttonItem = screen.getAllByRole('button', { name: /delete/i });
+		userEvent.click(buttonItem[0]);
+
+		render(<TaskList />);
+		//window.location.reload(true);
 
 		const listItemAfter = screen.getAllByRole('listitem');
 		expect(listItemAfter).toHaveLength(4);
