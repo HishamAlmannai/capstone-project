@@ -53,13 +53,4 @@ describe('Form', () => {
 		const nlItem = screen.getAllByRole('listitem');
 		expect(nlItem).toHaveLength(lCount + 1);
 	});
-	it('submits form data with no string', () => {
-		const { container } = render(<Form />);
-		const foo = container.querySelector('input:invalid');
-		console.log(foo);
-		const bItem = screen.getByRole('button');
-		userEvent.click(bItem);
-		const bar = container.querySelector('input:invalid');
-		console.log(bar);
-	});
 });
