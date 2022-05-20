@@ -33,8 +33,7 @@ describe('TaskList', () => {
 		const buttonItem = screen.getAllByRole('button', { name: /delete/i });
 		userEvent.click(buttonItem[0]);
 
-		render(<TaskList />);
-		//window.location.reload(true);
+		window.location.reload(true);
 
 		const listItemAfter = screen.getAllByRole('listitem');
 		expect(listItemAfter).toHaveLength(4);
