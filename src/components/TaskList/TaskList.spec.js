@@ -24,18 +24,4 @@ describe('TaskList', () => {
 		const listItemAfter = screen.getAllByRole('listitem');
 		expect(listItemAfter).toHaveLength(4);
 	});
-	it('renders five tasks and removes one and restarts the browser', () => {
-		render(<TaskList />);
-
-		const listItemBefore = screen.getAllByRole('listitem');
-		expect(listItemBefore).toHaveLength(5);
-
-		const buttonItem = screen.getAllByRole('button', { name: /delete/i });
-		userEvent.click(buttonItem[0]);
-
-		window.location.reload(true);
-
-		const listItemAfter = screen.getAllByRole('listitem');
-		expect(listItemAfter).toHaveLength(4);
-	});
 });
