@@ -4,7 +4,7 @@ import { persist } from 'zustand/middleware';
 
 const useStore = create(
 	persist(
-		set => ({
+		(set, get) => ({
 			tasks: [
 				{ id: nanoid(), name: 'The tasks are displayed, labeled by "ToDo:"', done: true },
 				{
@@ -33,6 +33,29 @@ const useStore = create(
 				set(state => {
 					return {
 						tasks: state.tasks.filter(dask => dask.id !== id),
+					};
+				});
+			},
+			getStatus: id => {
+				set(state => {
+					return {
+						tasks: state.tasks.findIndex(dask => dask.id === id),
+					};
+				});
+			},
+			getIndex: id => {
+				get(state => {
+					return {
+						state: state.tasks.findIndex(dask => dask.id === id),
+					};
+				});
+			},
+			checkTask: id => {
+				set(state => {
+					return {
+						tasks: state.tasks.map(dask =>
+							dask.id === id ? { ...dask, done: !dask.done } : dask
+						),
 					};
 				});
 			},
