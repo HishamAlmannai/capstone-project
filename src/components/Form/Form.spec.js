@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Home from '../../../pages';
 import TaskList from '../TaskList/TaskList';
 import Form from './Form';
 
@@ -18,7 +17,12 @@ describe('Form', () => {
 		expect(bItem).toBeInTheDocument();
 	});
 	it('submits form data and renders it', () => {
-		render(<Home />);
+		render(
+			<>
+				<Form />
+				<TaskList />
+			</>
+		);
 
 		const iItem = screen.getByRole('textbox');
 		const bItem = screen.getByRole('button', { name: /save/i });
