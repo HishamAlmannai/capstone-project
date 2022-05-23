@@ -16,7 +16,7 @@ describe('Form', () => {
 		expect(iItem).toBeInTheDocument();
 		expect(bItem).toBeInTheDocument();
 	});
-	it('submits form data and renders it', () => {
+	it('submits form data and renders it', async () => {
 		render(
 			<>
 				<Form />
@@ -26,15 +26,15 @@ describe('Form', () => {
 
 		const iItem = screen.getByRole('textbox');
 		const bItem = screen.getByRole('button', { name: /save/i });
-		const nText = 'wasd';
+		const nText = 'nothing';
 
-		userEvent.type(iItem, nText);
-		userEvent.click(bItem);
+		await userEvent.type(iItem, nText);
+		await userEvent.click(bItem);
 
 		const nTask = screen.getByText(nText);
 		expect(nTask).toBeInTheDocument();
 	});
-	it('submits form data and adds it in list', () => {
+	it('submits form data and adds it in list', async () => {
 		render(
 			<>
 				<Form />
@@ -48,8 +48,8 @@ describe('Form', () => {
 		const listItems = screen.getAllByRole('listitem');
 		const listCount = listItems.length;
 
-		userEvent.type(inputItem, newText);
-		userEvent.click(buttonItem);
+		await userEvent.type(inputItem, newText);
+		await userEvent.click(buttonItem);
 
 		const newTask = screen.getByText(newText);
 		expect(newTask).toBeInTheDocument();

@@ -6,16 +6,20 @@ describe('Task', () => {
 	it('renders a task and checkbox', () => {
 		render(
 			<Task
-				task={{ id: 1, name: 'The tasks are displayed, labeled by "ToDo:"', done: true }}
+				task={{
+					id: '1k3Ipsv5gtPHkap5qKWjW',
+					name: 'The tasks are displayed, labeled by "ToDo:"',
+					done: true,
+				}}
 			/>
 		);
 
-		const citem = screen.getByRole('checkbox');
-		const litem = screen.getByRole('listitem');
-		const test = screen.queryByText(/The tasks are displayed, labeled by "ToDo:"/i);
+		const checkboxItem = screen.getByRole('checkbox');
+		const listItem = screen.getByRole('listitem');
+		const Text = screen.queryByText(/The tasks are displayed, labeled by "ToDo:"/i);
 
-		expect(citem).toBeInTheDocument();
-		expect(litem).toBeInTheDocument();
-		expect(test).toBeInTheDocument();
+		expect(checkboxItem).toBeInTheDocument();
+		expect(listItem).toBeInTheDocument();
+		expect(Text).toBeInTheDocument();
 	});
 });
