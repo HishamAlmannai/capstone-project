@@ -24,4 +24,16 @@ describe('TaskList', () => {
 		const listItemAfter = screen.getAllByRole('listitem');
 		expect(listItemAfter).toHaveLength(3);
 	});
+	it('renders four tasks and removes both done', async () => {
+		render(<TaskList />);
+
+		const listItemBefore = screen.getAllByRole('listitem');
+		expect(listItemBefore).toHaveLength(4);
+
+		const archiveButton = screen.getByRole('button', { name: /Archive checked/i });
+		await userEvent.click(archiveButton);
+
+		const listItemAfter = screen.getAllByRole('listitem');
+		expect(listItemAfter).toHaveLength(2);
+	});
 });

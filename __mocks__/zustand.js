@@ -18,7 +18,7 @@ const create = createState => {
 		{
 			id: 'mIEC9lux_nZFSyZtSYC4i',
 			name: 'If a task has already been done, the checkbox should be checked',
-			done: false,
+			done: true,
 			archive: false,
 		},
 		{
