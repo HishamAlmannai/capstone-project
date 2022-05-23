@@ -1,27 +1,27 @@
 import React from 'react';
-import { userEvent } from '@storybook/testing-library';
+import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import TaskList from './TaskList';
 
 describe('TaskList', () => {
-	it('renders five tasks and five checkboxes', () => {
+	it('renders four tasks and four checkboxes', () => {
 		render(<TaskList />);
 
 		const listItem = screen.getAllByRole('listitem');
 
-		expect(listItem).toHaveLength(5);
+		expect(listItem).toHaveLength(4);
 	});
-	it('renders five tasks and removes one', () => {
+	it('renders four tasks and removes one', async () => {
 		render(<TaskList />);
 
 		const listItemBefore = screen.getAllByRole('listitem');
-		expect(listItemBefore).toHaveLength(5);
+		expect(listItemBefore).toHaveLength(4);
 
 		const buttonItem = screen.getAllByRole('button', { name: /delete/i });
-		userEvent.click(buttonItem[0]);
+		await userEvent.click(buttonItem[0]);
 
 		const listItemAfter = screen.getAllByRole('listitem');
-		expect(listItemAfter).toHaveLength(4);
+		expect(listItemAfter).toHaveLength(3);
 	});
 });

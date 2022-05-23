@@ -1,15 +1,16 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import Checkbox from './Checkbox';
 
 describe('Checkbox', () => {
-	it('renders a checkbox', () => {
-		render(<Checkbox task={{ done: false }} />);
+	it('renders a checkbox and checks it', () => {
+		render(<Checkbox task={{ id: '1k3Ipsv5gtPHkap5qKWjW' }} />);
 
-		let cItem = screen.getByRole('checkbox');
+		const checkboxItem = screen.getByRole('checkbox');
 
-		fireEvent.click(cItem);
+		fireEvent.click(checkboxItem);
 
-		expect(cItem.checked).toBeTruthy;
+		expect(checkboxItem.checked).toBe(true);
 	});
 });

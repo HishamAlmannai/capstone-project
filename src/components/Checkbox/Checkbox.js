@@ -6,6 +6,7 @@ export default function Checkbox(props) {
 	const id = props.task.id;
 	const tasks = useStore(state => state.tasks);
 	const done = tasks.find(element => element.id === id).done;
+
 	const check = useStore(state => state.checkTask);
 
 	return (
