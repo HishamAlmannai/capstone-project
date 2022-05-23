@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 
-export default function Form() {
+export default function Form({ editMode, id }) {
 	const [inputValue, setInputValue] = useState('');
 	const addTask = useStore(state => state.addTask);
 	const tasks = useStore(state => state.tasks);
+
+	if (editMode) {
+		const taskInput = tasks.find(element => element.id === id).name;
+		console.log(taskInput);
+		setInputValue(taskInput);
+	}
 
 	function onSubmit(inputValue, event) {
 		event.preventDefault();

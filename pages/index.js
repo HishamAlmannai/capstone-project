@@ -12,7 +12,7 @@ export default function Home() {
 		<>
 			<h1 hidden>ToNotDo</h1>
 			<h2>Create</h2>
-			<Form />
+			<Form editMode={false} />
 			<h2>ToDo</h2>
 			<TaskList />
 		</>
