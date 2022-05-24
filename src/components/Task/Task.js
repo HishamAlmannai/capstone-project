@@ -23,7 +23,7 @@ export default function Task(props) {
 							setEditMode(true);
 						}}
 					>
-						edit
+						Edit
 					</Button>
 				</>
 			)}

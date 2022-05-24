@@ -7,10 +7,14 @@ export default function Form({ editMode, id }) {
 	const addTask = useStore(state => state.addTask);
 	const tasks = useStore(state => state.tasks);
 
+	//const dunno = useCallback(() => {});
+
 	if (editMode) {
 		const taskInput = tasks.find(element => element.id === id).name;
 		console.log(taskInput);
 		setInputValue(taskInput);
+	} else {
+		console.log('false');
 	}
 
 	function onSubmit(inputValue, event) {
