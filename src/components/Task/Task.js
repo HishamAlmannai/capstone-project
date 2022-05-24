@@ -8,12 +8,14 @@ import Form from '../Form/Form';
 export default function Task(props) {
 	const deleteTask = useStore(state => state.deleteTask);
 	const [editMode, setEditMode] = useState('');
-
+	const exitEditMode = () => {
+		setEditMode(false);
+	};
 	return (
 		<StyledListItem role="listitem">
 			<Checkbox role="checkbox" task={props.task} />
 			{editMode ? (
-				<Form editMode id={props.task.id} />
+				<Form editMode id={props.task.id} exitEditMode={exitEditMode} />
 			) : (
 				<>
 					<span>{props.task.name}</span>

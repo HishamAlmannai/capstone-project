@@ -75,6 +75,15 @@ const useStore = create(
 					};
 				});
 			},
+			updateTask: (id, name) => {
+				set(state => {
+					return {
+						tasks: state.tasks.map(task =>
+							task.id === id ? { ...task, name: name } : task
+						),
+					};
+				});
+			},
 		}),
 		{ name: 'local tasks' }
 	)
