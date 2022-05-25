@@ -19,6 +19,7 @@ export default function Task(props) {
 			) : (
 				<>
 					<span>{props.task.name}</span>
+					<span>{props.task.dueDate}</span>
 					<Button
 						name="edit"
 						onClick={() => {
