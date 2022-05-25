@@ -20,7 +20,7 @@ export default function Task(props) {
 				<>
 					<span>{props.task.name}</span>
 					<Button
-						name="Button"
+						name="edit"
 						onClick={() => {
 							setEditMode(true);
 						}}
@@ -30,7 +30,7 @@ export default function Task(props) {
 				</>
 			)}
 			<Button
-				name="Button"
+				name="delete"
 				onClick={() => {
 					deleteTask(props.task.id);
 				}}

@@ -52,8 +52,8 @@ const useStore = create(
 			checkTask: id => {
 				set(state => {
 					return {
-						tasks: state.tasks.map(dask =>
-							dask.id === id ? { ...dask, done: !dask.done } : dask
+						tasks: state.tasks.map(task =>
+							task.id === id ? { ...task, done: !task.done } : task
 						),
 					};
 				});
@@ -62,15 +62,15 @@ const useStore = create(
 			deleteTask: id => {
 				set(state => {
 					return {
-						tasks: state.tasks.filter(dask => dask.id !== id),
+						tasks: state.tasks.filter(task => task.id !== id),
 					};
 				});
 			},
 			archiveTasks: () => {
 				set(state => {
 					return {
-						tasks: state.tasks.map(dask =>
-							dask.done ? { ...dask, archive: true } : dask
+						tasks: state.tasks.map(task =>
+							task.done ? { ...task, archive: true } : task
 						),
 					};
 				});
