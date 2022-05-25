@@ -14,7 +14,7 @@ export default function Checkbox(props) {
 			type="checkbox"
 			name="checkbox"
 			checked={done}
-			onChange={() => {
+			onClick={() => {
 				check(id);
 			}}
 		/>

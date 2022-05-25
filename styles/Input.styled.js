@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledCheckbox = styled.input`
 	width: 30px;
-	height: 30px;
+	height: 2rem;
 	border-radius: 5px;
 	border: 2px solid #8cad2d;
 `;
@@ -10,8 +10,9 @@ const StyledCheckbox = styled.input`
 export default StyledCheckbox;
 
 export const StyledDate = styled.input`
-	width: 100px;
-	height: 30px;
+	width: 200px;
+	height: 2rem;
 	border-radius: 5px;
 	border: 2px solid #8cad2d;
+	margin: 2rem;
 `;
