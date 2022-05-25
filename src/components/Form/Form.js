@@ -13,6 +13,7 @@ export default function Form({ editMode, exitEditMode, id }) {
 		if (editMode) {
 			const task = tasks.find(element => element.id === id);
 			setInputValue(task.name);
+			setDueDateValue(task.dueDate);
 		}
 	}, []);
 

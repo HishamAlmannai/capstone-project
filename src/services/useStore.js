@@ -86,11 +86,11 @@ const useStore = create(
 					};
 				});
 			},
-			updateTask: (id, name) => {
+			updateTask: (id, name, dueDate) => {
 				set(state => {
 					return {
 						tasks: state.tasks.map(task =>
-							task.id === id ? { ...task, name: name } : task
+							task.id === id ? { ...task, name: name, dueDate: dueDate } : task
 						),
 					};
 				});
