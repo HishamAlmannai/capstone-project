@@ -55,6 +55,8 @@ export default function Form({ editMode, exitEditMode, id }) {
 			<StyledDate
 				required
 				type="date"
+				name="inputDueDate"
+				aria-label="inputDueDate"
 				placeholder="dd-mm-yyyy"
 				value={dueDateValue}
 				onChange={event => {
