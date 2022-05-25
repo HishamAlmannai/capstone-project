@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 
 export default function Form({ editMode, exitEditMode, id }) {
 	const [inputValue, setInputValue] = useState('');
+	const [dueDateValue, setDueDateValue] = useState('');
 	const addTask = useStore(state => state.addTask);
 	const tasks = useStore(state => state.tasks);
 	const updateTask = useStore(state => state.updateTask);
@@ -15,16 +16,16 @@ export default function Form({ editMode, exitEditMode, id }) {
 		}
 	}, []);
 
-	function onSubmit(inputValue, event) {
-		event.preventDefault();
+	function onSubmit(event, inputValue, dueDateValue) {
 		if (tasks.some(task => task.name === inputValue && task.id !== id)) {
 			window.confirm('Task already in the list');
 		} else {
 			if (editMode) {
-				updateTask(id, inputValue);
+				updateTask(id, inputValue, dueDateValue);
 				exitEditMode();
 			} else {
-				addTask(inputValue);
+				event.preventDefault();
+				addTask(inputValue, dueDateValue);
 				setInputValue('');
 			}
 		}
@@ -34,7 +35,7 @@ export default function Form({ editMode, exitEditMode, id }) {
 		<form
 			name="form"
 			onSubmit={event => {
-				onSubmit(inputValue, event);
+				onSubmit(event, inputValue, dueDateValue);
 			}}
 		>
 			<input
@@ -49,7 +50,14 @@ export default function Form({ editMode, exitEditMode, id }) {
 					setInputValue(event.target.value);
 				}}
 			/>
-			<input required type="date" />
+			<input
+				required
+				type="date"
+				value={dueDateValue}
+				onChange={event => {
+					setDueDateValue(event.target.value);
+				}}
+			/>
 			<Button type="submit" name="save">
 				Save
 			</Button>

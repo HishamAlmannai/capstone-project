@@ -44,11 +44,17 @@ const useStore = create(
 				},
 			],
 
-			addTask: task => {
+			addTask: (task, dueDate) => {
 				set(state => {
 					return {
 						tasks: [
-							{ id: nanoid(), name: task, done: false, archive: false },
+							{
+								id: nanoid(),
+								name: task,
+								done: false,
+								archive: false,
+								dueDate: dueDate,
+							},
 							...state.tasks,
 						],
 					};
