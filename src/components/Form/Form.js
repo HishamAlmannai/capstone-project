@@ -49,6 +49,7 @@ export default function Form({ editMode, exitEditMode, id }) {
 					setInputValue(event.target.value);
 				}}
 			/>
+			<input required type="date" />
 			<Button type="submit" name="save">
 				Save
 			</Button>
