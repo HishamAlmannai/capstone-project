@@ -24,15 +24,15 @@ describe('Form', () => {
 			</>
 		);
 
-		const iItem = screen.getByRole('textbox');
-		const bItem = screen.getByRole('button', { name: /save/i });
-		const nText = 'nothing';
+		const inputItem = screen.getByRole('textbox');
+		const buttonItem = screen.getByRole('button', { name: /save/i });
+		const newText = 'nothing';
 
-		await userEvent.type(iItem, nText);
-		await userEvent.click(bItem);
+		await userEvent.type(inputItem, newText);
+		await userEvent.click(buttonItem);
 
-		const nTask = screen.getByText(nText);
-		expect(nTask).toBeInTheDocument();
+		const newTask = screen.getByText(newText);
+		expect(newTask).toBeInTheDocument();
 	});
 	it('submits form data and adds it in list', async () => {
 		render(

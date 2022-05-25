@@ -36,4 +36,18 @@ describe('TaskList', () => {
 		const listItemAfter = screen.getAllByRole('listitem');
 		expect(listItemAfter).toHaveLength(2);
 	});
+	it('modifies a task', async () => {
+		render(<TaskList />);
+
+		const editButton = screen.getAllByRole('button', { name: /edit/i });
+		await userEvent.click(editButton[0]);
+		const inputItem = screen.getByRole('textbox');
+		await userEvent.clear(inputItem);
+		const text = 'whooot';
+		await userEvent.type(inputItem, text);
+		const saveButton = screen.getByRole('button', { name: /save/i });
+		await userEvent.click(saveButton);
+		const readText = screen.getByText(text);
+		expect(readText).toBeInTheDocument();
+	});
 });

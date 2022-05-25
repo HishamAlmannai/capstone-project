@@ -49,7 +49,9 @@ export default function Form({ editMode, exitEditMode, id }) {
 					setInputValue(event.target.value);
 				}}
 			/>
-			<Button type="submit">Save</Button>
+			<Button type="submit" name="save">
+				Save
+			</Button>
 		</form>
 	);
 }
