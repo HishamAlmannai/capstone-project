@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { StyledDate } from '../../../styles/Input.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 
@@ -51,9 +52,10 @@ export default function Form({ editMode, exitEditMode, id }) {
 					setInputValue(event.target.value);
 				}}
 			/>
-			<input
+			<StyledDate
 				required
 				type="date"
+				placeholder="dd-mm-yyyy"
 				value={dueDateValue}
 				onChange={event => {
 					setDueDateValue(event.target.value);

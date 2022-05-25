@@ -8,3 +8,10 @@ const StyledCheckbox = styled.input`
 `;
 
 export default StyledCheckbox;
+
+export const StyledDate = styled.input`
+	width: 100px;
+	height: 30px;
+	border-radius: 5px;
+	border: 2px solid #8cad2d;
+`;

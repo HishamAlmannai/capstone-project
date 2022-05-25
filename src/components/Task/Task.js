@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import React, { useState } from 'react';
 import StyledListItem from '../../../styles/ListItem.styled';
 import useStore from '../../services/useStore';
@@ -11,6 +12,8 @@ export default function Task(props) {
 	const exitEditMode = () => {
 		setEditMode(false);
 	};
+	const formatDueDate = format(new Date(props.task.dueDate), 'dd/MM/yyyy');
+
 	return (
 		<StyledListItem role="listitem">
 			<Checkbox role="checkbox" task={props.task} />
@@ -19,7 +22,7 @@ export default function Task(props) {
 			) : (
 				<>
 					<span>{props.task.name}</span>
-					<span>{props.task.dueDate}</span>
+					<span>{formatDueDate}</span>
 					<Button
 						name="edit"
 						onClick={() => {

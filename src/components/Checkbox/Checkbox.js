@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledCheckbox from '../../../styles/Checkbox.styled';
+import StyledCheckbox from '../../../styles/Input.styled';
 import useStore from '../../services/useStore';
 
 export default function Checkbox(props) {
