@@ -10,5 +10,5 @@ export default {
 };
 
 export function Default() {
-	return <Button {...props} />;
+	return <Button {...props}>Button</Button>;
 }

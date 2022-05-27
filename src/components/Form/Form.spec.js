@@ -28,6 +28,10 @@ describe('Form', () => {
 		const buttonItem = screen.getByRole('button', { name: /save/i });
 		const newText = 'nothing';
 
+		const dateInput = screen.getByLabelText('inputDueDate');
+		const newDate = '2025-03-12';
+		await userEvent.type(dateInput, newDate);
+
 		await userEvent.type(inputItem, newText);
 		await userEvent.click(buttonItem);
 
@@ -42,16 +46,19 @@ describe('Form', () => {
 			</>
 		);
 
-		const inputItem = screen.getByRole('textbox');
-		const buttonItem = screen.getByRole('button', { name: /save/i });
+		const textInput = screen.getByRole('textbox');
 		const newText = 'wasd';
 		const listItems = screen.getAllByRole('listitem');
 		const listCount = listItems.length;
 
-		await userEvent.type(inputItem, newText);
+		await userEvent.type(textInput, newText);
+		const buttonItem = screen.getByRole('button', { name: /save/i });
+		const dateInput = screen.getByLabelText('inputDueDate');
+		const newDate = '2025-03-12';
+		await userEvent.type(dateInput, newDate);
 		await userEvent.click(buttonItem);
 
-		const newTask = screen.getByText(newText);
+		const newTask = screen.getByText(/was/i);
 		expect(newTask).toBeInTheDocument();
 
 		const newListItem = screen.getAllByRole('listitem');

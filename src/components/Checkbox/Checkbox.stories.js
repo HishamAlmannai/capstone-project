@@ -1,4 +1,3 @@
-import React from 'react';
 import Checkbox from './Checkbox';
 
 export default {
@@ -6,8 +5,8 @@ export default {
 };
 
 export function Default() {
-	return <Checkbox task={{ done: false }} />;
+	return <Checkbox task={{ done: true }} />;
 }
 export function checked() {
-	return <Checkbox task={{ done: true }} />;
+	return <Checkbox task={{ done: false }} />;
 }

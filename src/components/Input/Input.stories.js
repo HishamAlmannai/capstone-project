@@ -14,3 +14,7 @@ export default {
 export function Default() {
 	return <Input {...props} />;
 }
+
+export function date() {
+	return <input type="date" />;
+}
