@@ -16,7 +16,7 @@ export default function Task(props) {
 
 	return (
 		<StyledListItem role="listitem">
-			<Checkbox role="checkbox" task={props.task} />
+			<Checkbox task={props.task} />
 			{editMode ? (
 				<Form editMode id={props.task.id} exitEditMode={exitEditMode} />
 			) : (

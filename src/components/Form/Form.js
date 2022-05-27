@@ -64,7 +64,7 @@ export default function Form({ editMode, exitEditMode, id }) {
 				}}
 			/>
 			<Button type="submit" name="save">
-				Save
+				{editMode ? 'Edit' : 'Save'}
 			</Button>
 		</form>
 	);

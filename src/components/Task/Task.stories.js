@@ -7,7 +7,7 @@ const props = {
 		name: 'All tasks should be displayed in vertical order',
 		done: true,
 		archive: false,
-		dueDate: '2025-03-12',
+		dueDate: '2222-03-12',
 	},
 };
 

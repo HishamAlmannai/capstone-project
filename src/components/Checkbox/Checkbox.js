@@ -4,8 +4,7 @@ import useStore from '../../services/useStore';
 
 export default function Checkbox(props) {
 	const id = props.task.id;
-	const tasks = useStore(state => state.tasks);
-	const done = tasks.find(element => element.id === id).done;
+	const done = props.task.done;
 
 	const check = useStore(state => state.checkTask);
 
