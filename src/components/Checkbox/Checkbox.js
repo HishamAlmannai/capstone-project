@@ -1,12 +1,12 @@
 import React from 'react';
-import StyledCheckbox from '../../../styles/Input.styled';
+import StyledCheckbox from '../../../styles/Checkbox.styled';
 import useStore from '../../services/useStore';
 
 export default function Checkbox(props) {
 	const id = props.task.id;
 	const done = props.task.done;
 
-	const check = useStore(state => state.checkTask);
+	const checkTask = useStore(state => state.checkTask);
 
 	return (
 		<StyledCheckbox
@@ -14,7 +14,7 @@ export default function Checkbox(props) {
 			name="checkbox"
 			checked={done}
 			onClick={() => {
-				check(id);
+				checkTask(id);
 			}}
 		/>
 	);
