@@ -10,28 +10,25 @@ const useStore = create(
 					id: nanoid(),
 					name: 'The tasks are displayed, labeled by "ToDo:"',
 					done: true,
-					archive: false,
 					dueDate: '2025-03-12',
 				},
 				{
 					id: nanoid(),
 					name: 'If a task has already been done, the checkbox should be checked',
 					done: false,
-					archive: false,
 					dueDate: '2025-03-12',
 				},
 				{
 					id: nanoid(),
 					name: 'Each task should be visually separated',
 					done: true,
-					archive: false,
 					dueDate: '2025-03-12',
 				},
 				{
 					id: nanoid(),
 					name: "Each task should display it's own checkbox",
 					done: true,
-					archive: false,
+
 					dueDate: '2025-03-12',
 				},
 
@@ -39,10 +36,11 @@ const useStore = create(
 					id: nanoid(),
 					name: 'All tasks should be displayed in vertical order',
 					done: true,
-					archive: false,
+
 					dueDate: '2025-03-12',
 				},
 			],
+			archive: [],
 
 			addTask: (task, dueDate) => {
 				set(state => {
@@ -53,7 +51,7 @@ const useStore = create(
 								name: task,
 								done: false,
 								archive: false,
-								dueDate: dueDate,
+								dueDate,
 							},
 							...state.tasks,
 						],
@@ -80,9 +78,8 @@ const useStore = create(
 			archiveTasks: () => {
 				set(state => {
 					return {
-						tasks: state.tasks.map(task =>
-							task.done ? { ...task, archive: true } : task
-						),
+						archive: state.tasks.filter(task => task.done),
+						tasks: state.tasks.filter(task => !task.done),
 					};
 				});
 			},
@@ -90,7 +87,7 @@ const useStore = create(
 				set(state => {
 					return {
 						tasks: state.tasks.map(task =>
-							task.id === id ? { ...task, name: name, dueDate: dueDate } : task
+							task.id === id ? { ...task, name, dueDate } : task
 						),
 					};
 				});
