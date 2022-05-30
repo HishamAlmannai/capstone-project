@@ -50,7 +50,6 @@ const useStore = create(
 								id: nanoid(),
 								name: task,
 								done: false,
-								archive: false,
 								dueDate,
 							},
 							...state.tasks,

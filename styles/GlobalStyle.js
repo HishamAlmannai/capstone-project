@@ -17,6 +17,8 @@ const GlobalStyle = createGlobalStyle`
   }; 
 ul {
   list-style-type: none;
+  margin: 0; 
+    padding: 0; 
 }
 
   input {
@@ -28,8 +30,45 @@ ul {
     margin: 1rem
   }
 
-  span {
-    margin :1rem
+  
+  article {
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+  article.accordion {
+    background-color: green;
+    
+  }
+  div.task {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+  }
+  div.edit {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between
+  }
+
+  span.task {
+    background-color: black;
+   
+  }
+
+  span.accordion {
+    background-color: yellow;
+    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  
+  }
+
+  span.dueDate{
+    margin-left: auto
   }
 `;
 

@@ -1,12 +1,12 @@
-import Checkbox from './Checkbox';
+import StyledCheckbox from '../../../styles/Checkbox.styled';
 
 export default {
 	title: 'components/checkbox',
 };
 
 export function Default() {
-	return <Checkbox task={{ done: true }} />;
+	return <StyledCheckbox task={{ done: true }} />;
 }
 export function checked() {
-	return <Checkbox task={{ done: false }} />;
+	return <StyledCheckbox task={{ done: false }} />;
 }
