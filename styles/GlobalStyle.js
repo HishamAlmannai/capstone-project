@@ -37,16 +37,20 @@ const GlobalStyle = createGlobalStyle`
     li {
       transition: 1
     }
-
+    
     li:not(:first-child){
-    margin-top: -10px
+      margin-top: -10px
+    }
+
+    li:hover {
+    transform: translateY(-10px);
     }
     
   form {
-  display: flex;  
-  flex-direction: column;
-  width: 100%;
-  margin: 0.5rem
+    display: flex;  
+    flex-direction: column;
+    width: 100%;
+    margin: 0.5rem
   }
 
   input {
@@ -70,7 +74,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: green;
   }
 
-
   div.task {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
@@ -88,9 +91,6 @@ const GlobalStyle = createGlobalStyle`
    margin-top: 0.5rem;
   }
 
-  li:hover {
-    transform: translateY(-10px);
-  }
   span.accordion {
     overflow: hidden;
     white-space: nowrap;
