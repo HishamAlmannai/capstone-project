@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import React, { useState } from 'react';
-import StyledCheckbox from '../../../styles/Checkbox.styled';
+import { StyledCheckbox } from '../../../styles/Input.styled';
 import StyledListItem from '../../../styles/ListItem.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
