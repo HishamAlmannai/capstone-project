@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { StyledDate } from '../../../styles/Input.styled';
+import { StyledDate, StyledInput } from '../../../styles/Input.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 
-export default function Form({ editMode, exitEditMode, id }) {
+export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 	const [inputValue, setInputValue] = useState('');
 	const [dueDateValue, setDueDateValue] = useState('');
 	const addTask = useStore(state => state.addTask);
@@ -17,6 +17,10 @@ export default function Form({ editMode, exitEditMode, id }) {
 			setDueDateValue(task.dueDate);
 		}
 	}, []);
+
+	if (handleSubmit) {
+		onSubmit(event, inputValue, dueDateValue);
+	}
 
 	function onSubmit(event, inputValue, dueDateValue) {
 		if (tasks.some(task => task.name === inputValue && task.id !== id)) {
@@ -40,7 +44,7 @@ export default function Form({ editMode, exitEditMode, id }) {
 				onSubmit(event, inputValue, dueDateValue);
 			}}
 		>
-			<input
+			<StyledInput
 				required
 				type="text"
 				minLength="2"
@@ -63,9 +67,11 @@ export default function Form({ editMode, exitEditMode, id }) {
 					setDueDateValue(event.target.value);
 				}}
 			/>
-			<Button type="submit" name="save">
-				{editMode ? 'Edit' : 'Save'}
-			</Button>
+			{!editMode && (
+				<Button type="submit" name="save">
+					Save
+				</Button>
+			)}
 		</form>
 	);
 }

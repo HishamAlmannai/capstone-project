@@ -1,18 +1,15 @@
 import styled from 'styled-components';
 
-const StyledCheckbox = styled.input`
-	width: 30px;
-	height: 2rem;
-	border-radius: 5px;
-	border: 2px solid #8cad2d;
+export const StyledInput = styled.input`
+	height: 3rem;
+	border-radius: 0.5rem 0.5rem 0 0;
 `;
 
-export default StyledCheckbox;
-
 export const StyledDate = styled.input`
-	width: 200px;
+	border-radius: 0 0 0.5rem 0.5rem;
+`;
+
+export const StyledCheckbox = styled.input`
 	height: 2rem;
 	border-radius: 5px;
-	border: 2px solid #8cad2d;
-	margin: 2rem;
 `;

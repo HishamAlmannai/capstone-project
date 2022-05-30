@@ -6,12 +6,11 @@ import Task from '../Task/Task';
 export default function TaskList() {
 	const tasks = useStore(state => state.tasks);
 	const archiveTasks = useStore(state => state.archiveTasks);
-	const activeTasks = tasks.filter(task => task.archive === false);
 
 	return (
 		<>
 			<ul>
-				{activeTasks.map(task => (
+				{tasks.map(task => (
 					<Task key={task.id} task={task} />
 				))}
 			</ul>

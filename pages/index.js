@@ -9,12 +9,12 @@ export default function Home() {
 		ssr: false, // This line is important.
 	});
 	return (
-		<>
+		<main>
 			<h1 hidden>ToNotDo</h1>
 			<h2>Create</h2>
 			<Form editMode={false} />
 			<h2>ToDo</h2>
 			<TaskList />
-		</>
+		</main>
 	);
 }
