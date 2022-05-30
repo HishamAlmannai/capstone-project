@@ -13,11 +13,11 @@ export default function Task(props) {
 
 	const deleteTask = useStore(state => state.deleteTask);
 	const [editMode, setEditMode] = useState('');
-	const [activeMode, setActiveMode] = useState(true);
-	const [handleSubmit, setHandleSubmit] = useState(false);
+	const [expandedMode, setExpandedMode] = useState(true);
+	const [hasSubmit, setHasSubmit] = useState(false);
 	const exitEditMode = () => {
 		setEditMode(false);
-		setHandleSubmit(false);
+		setHasSubmit(false);
 	};
 	const checkTask = useStore(state => state.checkTask);
 
@@ -25,7 +25,7 @@ export default function Task(props) {
 
 	return (
 		<StyledListItem role="listitem">
-			<article className={activeMode && 'accordion'}>
+			<article className={expandedMode && 'accordion'}>
 				{editMode ? (
 					<>
 						<div className="task">
@@ -39,7 +39,7 @@ export default function Task(props) {
 							/>
 							<Form
 								editMode
-								handleSubmit={handleSubmit}
+								handleSubmit={hasSubmit}
 								id={id}
 								exitEditMode={exitEditMode}
 							/>
@@ -49,9 +49,9 @@ export default function Task(props) {
 								type="submit"
 								name="save"
 								form={id}
-								onClick={() => setHandleSubmit(true)}
+								onClick={() => setHasSubmit(true)}
 							>
-								{editMode ? 'Edit' : 'Save'}
+								Save
 							</Button>
 							<Button
 								name="delete"
@@ -75,9 +75,9 @@ export default function Task(props) {
 								}}
 							/>
 							<span
-								className={activeMode ? 'accordion' : 'task'}
+								className={expandedMode ? 'accordion' : 'task'}
 								onClick={() => {
-									setActiveMode(!activeMode);
+									setExpandedMode(!expandedMode);
 								}}
 							>
 								{name}
@@ -85,7 +85,7 @@ export default function Task(props) {
 
 							<span className="dueDate">{formatDueDate}</span>
 						</div>
-						{!activeMode && (
+						{!expandedMode && (
 							<div className="edit">
 								<Button
 									name="edit"

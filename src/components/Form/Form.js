@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StyledDate, StyledInput } from '../../../styles/Input.styled';
 import useStore from '../../services/useStore';
+import Button from '../Button/Button';
 
 export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 	const [inputValue, setInputValue] = useState('');
@@ -66,6 +67,11 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 					setDueDateValue(event.target.value);
 				}}
 			/>
+			{!editMode && (
+				<Button type="submit" name="save">
+					Save
+				</Button>
+			)}
 		</form>
 	);
 }
