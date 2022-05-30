@@ -13,13 +13,27 @@ const GlobalStyle = createGlobalStyle`
     
     display: flex;
     justify-content: center;
+    align-items: center
   
   }; 
-ul {
-  list-style-type: none;
-  margin: 0; 
+
+  main {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center ;
+  }
+
+  h2 {
+    text-align: center
+    }
+
+  ul {
+    list-style-type: none;
+    margin: 0; 
     padding: 0; 
-}
+    position: relative
+  }
 
   input {
     font-size: 1rem
@@ -29,21 +43,22 @@ ul {
     font-size: 1rem;
     margin: 1rem
   }
-
   
   article {
     display: flex;
     flex-direction: column;
     background-color: orange;
     border-radius: 0.5rem 0.5rem 0 0;
+    box-shadow: 0 0 1rem 0 #000;
   }
+
   article.accordion {
     background-color: green;
-    
   }
+
   div.task {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     
   }
   div.edit {
@@ -59,8 +74,6 @@ ul {
   }
 
   span.accordion {
-    background-color: yellow;
-    
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
