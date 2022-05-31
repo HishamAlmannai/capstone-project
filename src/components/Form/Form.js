@@ -33,6 +33,7 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 				event.preventDefault();
 				addTask(inputValue, dueDateValue);
 				setInputValue('');
+				setDueDateValue('');
 			}
 		}
 	}
