@@ -34,7 +34,7 @@ export default function Task(props) {
 								name="checkbox"
 								checked={done}
 								onChange={() => {
-									checkTask(id);
+									checkTask(id, done);
 								}}
 							/>
 							<Form
