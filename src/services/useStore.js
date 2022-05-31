@@ -60,6 +60,7 @@ const useStore = create(
 								done: false,
 								startDate: new Date(),
 								dueDate,
+								doneDate: '',
 							},
 							...state.tasks,
 						],
@@ -70,7 +71,9 @@ const useStore = create(
 				set(state => {
 					return {
 						tasks: state.tasks.map(task =>
-							task.id === id ? { ...task, done: !task.done } : task
+							task.id === id
+								? { ...task, done: !task.done, doneDate: new Date() }
+								: task
 						),
 					};
 				});
