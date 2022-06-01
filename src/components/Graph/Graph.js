@@ -2,11 +2,22 @@ import React from 'react';
 import { Chart, LineElement, LinearScale, CategoryScale, BarElement } from 'chart.js';
 Chart.register(LineElement, LinearScale, CategoryScale, BarElement);
 import { Bar } from 'react-chartjs-2';
+import useStore from '../../services/useStore';
+import { format } from 'date-fns';
+import { orderBy } from 'lodash';
 
 export default function Graph() {
-	const now = new Date();
+	const tasks = useStore(state => state.tasks);
+
+	const tasksDone = tasks.filter(task => task.done);
+	const startDates = tasksDone.map(task => format(new Date(task.startDate), 'dd/MM/yyyy'));
+	const orderedTasksDone = orderBy(tasksDone, ['startDate']);
+	console.log(orderedTasksDone);
+
+	//const now = format(new Date(), 'dd/MM/'); //'Today' + now
+
 	const data = {
-		labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', now],
+		labels: startDates,
 		datasets: [
 			{
 				label: '',
@@ -40,5 +51,5 @@ export default function Graph() {
 		},
 	};
 
-	return <Bar class="canvas" data={data} options={options} width={400} height={400} />;
+	return <Bar class="canvas" data={data} options={options} width={200} height={100} />;
 }

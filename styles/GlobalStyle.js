@@ -33,19 +33,7 @@ const GlobalStyle = createGlobalStyle`
       padding: 0; 
       position: relative
     }
-    
-    li {
-      transition: 1
-    }
-    
-    li:not(:first-child){
-      margin-top: -10px
-    }
-
-    li:hover {
-    transform: translateY(-10px);
-    }
-    
+      
   form {
     display: flex;  
     flex-direction: column;
@@ -72,12 +60,13 @@ const GlobalStyle = createGlobalStyle`
 
   article.accordion {
     background-color: green;
+    padding: -20px
   }
 
   div.task {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-    
+    margin: 10px;
   }
   div.edit {
     display: flex;
@@ -96,7 +85,6 @@ const GlobalStyle = createGlobalStyle`
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-top: 0.5rem;
-
   }
 
   span.dueDate{

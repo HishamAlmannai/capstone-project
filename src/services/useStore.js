@@ -5,6 +5,31 @@ import { persist } from 'zustand/middleware';
 const useStore = create(
 	persist(
 		set => ({
+			/* labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', now],
+			datasets: [
+				{
+					label: '',
+					data: [12, 19, 3, 5, 2, 3],
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)',
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)',
+					],
+					borderWidth: 1,
+				},
+			], */
+
 			tasks: [
 				{
 					id: nanoid(),
@@ -12,7 +37,7 @@ const useStore = create(
 					done: true,
 					dueDate: '2025-03-12',
 					doneDate: '2021-04-11',
-					startDate: '0010-03-09',
+					startDate: '0010-03-10',
 				},
 				{
 					id: nanoid(),
@@ -28,7 +53,7 @@ const useStore = create(
 					done: true,
 					dueDate: '2025-03-12',
 					doneDate: '2024-04-11',
-					startDate: '0150-03-09',
+					startDate: '0150-03-12',
 				},
 				{
 					id: nanoid(),
@@ -36,7 +61,7 @@ const useStore = create(
 					done: true,
 					dueDate: '2025-03-12',
 					doneDate: '2023-04-11',
-					startDate: '0100-03-09',
+					startDate: '0100-03-01',
 				},
 
 				{
