@@ -102,6 +102,8 @@ const GlobalStyle = createGlobalStyle`
   span.dueDate{
     margin-left: auto
   }
+
+  
 `;
 
 export default GlobalStyle;

@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import Graph from '../src/components/Graph/Graph';
 
 export default function Home() {
 	//delete on mongoDB integration, only used for persist/localStorage (dynamic import with NO SSR form next.js docu --> https://nextjs.org/docs/advanced-features/dynamic-import)
@@ -15,6 +16,7 @@ export default function Home() {
 			<Form editMode={false} />
 			<h2>ToDo</h2>
 			<TaskList />
+			<Graph />
 		</main>
 	);
 }

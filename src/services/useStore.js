@@ -70,11 +70,13 @@ const useStore = create(
 			checkTask: id => {
 				set(state => {
 					return {
-						tasks: state.tasks.map(task =>
-							task.id === id
-								? { ...task, done: !task.done, doneDate: new Date() }
-								: task
-						),
+						tasks: state.tasks.map(task => {
+							if (task.id === id) {
+								return { ...task, done: !task.done, doneDate: new Date() };
+							} else {
+								return task;
+							}
+						}),
 					};
 				});
 			},
