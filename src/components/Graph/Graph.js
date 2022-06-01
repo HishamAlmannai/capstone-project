@@ -1,7 +1,7 @@
 import React from 'react';
-import { Chart, LineElement, LinearScale, CategoryScale, BarElement } from 'chart.js';
-Chart.register(LineElement, LinearScale, CategoryScale, BarElement);
-import { Bar } from 'react-chartjs-2';
+import { Chart, LineElement, LinearScale, CategoryScale, BarElement, PointElement } from 'chart.js';
+Chart.register(LineElement, LinearScale, CategoryScale, BarElement, PointElement);
+import { Line } from 'react-chartjs-2';
 import useStore from '../../services/useStore';
 import { format } from 'date-fns';
 import { orderBy } from 'lodash';
@@ -10,9 +10,15 @@ export default function Graph() {
 	const tasks = useStore(state => state.tasks);
 
 	const tasksDone = tasks.filter(task => task.done);
-	const startDates = tasksDone.map(task => format(new Date(task.startDate), 'dd/MM/yyyy'));
-	const orderedTasksDone = orderBy(tasksDone, ['startDate']);
-	console.log(orderedTasksDone);
+	const TasksDoneByStart = orderBy(tasksDone, ['startDate']);
+
+	const startDates = TasksDoneByStart.map(task => format(new Date(task.startDate), 'dd/MM/yyyy'));
+	const countDone = TasksDoneByStart.map(
+		taskOne => TasksDoneByStart.filter(taskTwo => taskOne.startDate < taskTwo.doneDate).length
+	);
+
+	console.log(countDone);
+	console.log(TasksDoneByStart);
 
 	//const now = format(new Date(), 'dd/MM/'); //'Today' + now
 
@@ -21,7 +27,7 @@ export default function Graph() {
 		datasets: [
 			{
 				label: '',
-				data: [12, 19, 3, 5, 2, 3],
+				data: countDone,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
@@ -51,5 +57,5 @@ export default function Graph() {
 		},
 	};
 
-	return <Bar class="canvas" data={data} options={options} width={200} height={100} />;
+	return <Line class="canvas" data={data} options={options} width={200} height={100} />;
 }
