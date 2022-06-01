@@ -12,11 +12,15 @@ export default function Home() {
 	return (
 		<main>
 			<h1 hidden>ToNotDo</h1>
-			<h2>Create</h2>
-			<Form editMode={false} />
-			<h2>ToDo</h2>
+			<h2 hidden>Create</h2>
+			<article>
+				<Form editMode={false} />
+			</article>
+			<h2 hidden>ToDo</h2>
 			<TaskList />
-			<Graph />
+			<article>
+				<Graph />
+			</article>
 		</main>
 	);
 }

@@ -10,10 +10,7 @@ const GlobalStyle = createGlobalStyle`
  }
 
  html {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
+       background-color: rgb(255, 251, 224)
   }; 
 
   main {
@@ -37,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
   form {
     display: flex;  
     flex-direction: column;
-    width: 100%;
+    width: 95%;
     margin: 0.5rem
   }
 
@@ -48,19 +45,22 @@ const GlobalStyle = createGlobalStyle`
   button {  
     font-size: 1rem;
     margin: 1rem;
+    background-color: transparent;
+    border-radius: 0.5rem;
+    padding: 0.5rem
   }
   
   article {
     display: flex;
     flex-direction: column;
-    background-color: orange;
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: 0.75rem 0.75rem 0 0;
     box-shadow: 0 0 1rem 0 #000;
+    background-color: rgb(255, 251, 224);
+    width: 100vw;
   }
 
   article.accordion {
-    background-color: green;
-    padding: -20px
+    padding: -20px;
   }
 
   div.task {
@@ -76,8 +76,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   span.task {
-    background-color: black;
    margin-top: 0.5rem;
+   &:hover{
+     cursor: pointer
+   }
   }
 
   span.accordion {
@@ -85,6 +87,8 @@ const GlobalStyle = createGlobalStyle`
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-top: 0.5rem;
+    &:hover{
+      cursor: pointer
   }
 
   span.dueDate{

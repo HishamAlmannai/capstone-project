@@ -101,7 +101,7 @@ const useStore = create(
 					name: "9 Each task should display it's own checkbox",
 					done: true,
 					dueDate: '2025-03-12',
-					doneDate: '2022-03-10',
+					doneDate: '2022-03-09',
 					startDate: '2022-03-08',
 				},
 

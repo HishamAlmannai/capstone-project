@@ -62,7 +62,7 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 				type="date"
 				name="inputDueDate"
 				aria-label="inputDueDate"
-				placeholder="dd-mm-yyyy"
+				placeholder="Due Date"
 				value={dueDateValue}
 				onChange={event => {
 					setDueDateValue(event.target.value);

@@ -14,13 +14,15 @@ export default function TaskList() {
 					<Task key={task.id} task={task} />
 				))}
 			</ul>
-			<Button
-				onClick={() => {
-					archiveTasks();
-				}}
-			>
-				Archive checked
-			</Button>
+			<article>
+				<Button
+					onClick={() => {
+						archiveTasks();
+					}}
+				>
+					Archive checked
+				</Button>
+			</article>
 		</>
 	);
 }
