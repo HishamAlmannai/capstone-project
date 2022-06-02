@@ -11,5 +11,4 @@ export const StyledDate = styled.input`
 
 export const StyledCheckbox = styled.input`
 	height: 2rem;
-	border-radius: 5px;
 `;
