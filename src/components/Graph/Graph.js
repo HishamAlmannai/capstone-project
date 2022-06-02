@@ -9,19 +9,20 @@ import { orderBy } from 'lodash';
 export default function Graph() {
 	const tasks = useStore(state => state.tasks);
 
-	const pastDates = tasks.flatMap(task => [task.startDate, task.doneDate]);
-	const cleanPastDates = pastDates.filter(date => date !== undefined);
+	const cleanPastDates = tasks
+		.flatMap(task => [task.startDate, task.doneDate])
+		.filter(date => date !== undefined);
 	const orderedPastDates = orderBy(cleanPastDates);
 
 	const tasksCountAtDate = orderedPastDates.map(
 		date => tasks.filter(task => task.startDate < date).length
 	);
 	const shiftTasksCountAtDate = tasksCountAtDate.map(count => count - 1);
-	const TasksDoneAtDate = orderedPastDates.map(
+	const tasksDoneAtDate = orderedPastDates.map(
 		date => tasks.filter(task => task.doneDate < date).length
 	);
 	const substractTasksDone = shiftTasksCountAtDate.map(
-		(task, index) => task - TasksDoneAtDate[index]
+		(number, index) => number - tasksDoneAtDate[index]
 	);
 	const Dates = orderedPastDates.map(date => format(new Date(date), 'k:m:s'));
 

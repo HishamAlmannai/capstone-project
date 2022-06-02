@@ -56,8 +56,6 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 0.75rem ;
     box-shadow: 0 0 1rem 0 #000;
     background-color: rgb(255, 251, 224);
-    width: 100vw;
-   
   }
 
   article.accordion {
@@ -95,35 +93,7 @@ const GlobalStyle = createGlobalStyle`
   span.dueDate{
     margin-left: auto
   }
-/* 
-  input[type="checkbox"] {
-  appearance: none;
-  background-color: #fff;
-  margin: 0;
-  font: inherit;
-  color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
-  border: 0.15em solid currentColor;
-  border-radius: 0.15em;
-  transform: translateY(-0.075em);
-  display: grid;
-  place-content: center;
-}
-
-input[type="checkbox"]::before {
-  content: "";
-  width: 0.65em;
-  height: 0.65em;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--form-control-color);
-}
-
-input[type="checkbox"]:checked::before {
-  transform: scale(1);
-} */
-
+  }
 `;
 
 export default GlobalStyle;
