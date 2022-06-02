@@ -1,8 +1,8 @@
 import React from 'react';
+import useStore from '../../services/useStore';
 import { Chart, LineElement, LinearScale, CategoryScale, BarElement, PointElement } from 'chart.js';
 Chart.register(LineElement, LinearScale, CategoryScale, BarElement, PointElement);
 import { Line } from 'react-chartjs-2';
-import useStore from '../../services/useStore';
 import { format } from 'date-fns';
 import { orderBy } from 'lodash';
 
@@ -45,7 +45,6 @@ export default function Graph() {
 			y: {
 				beginAtZero: true,
 				ticks: {
-					// forces step size to be 50 units
 					stepSize: 1,
 				},
 			},
