@@ -1,4 +1,4 @@
-import StyledCheckbox from '../../../styles/Checkbox.styled';
+import StyledCheckbox from '../../../styles/Input.styled';
 
 export default {
 	title: 'components/checkbox',
