@@ -9,32 +9,30 @@ import { orderBy } from 'lodash';
 export default function Graph() {
 	const tasks = useStore(state => state.tasks);
 
-	const tasksDone = tasks.filter(task => task.done);
-	const TasksDoneByStartDate = orderBy(tasksDone, ['startDate']);
+	const pastDates = tasks.flatMap(task => [task.startDate, task.doneDate]);
+	const cleanPastDates = pastDates.filter(date => date !== undefined);
+	const orderedPastDates = orderBy(cleanPastDates);
 
-	const startDates = TasksDoneByStartDate.map(task =>
-		format(new Date(task.startDate), 'dd/MM/yyyy')
+	const tasksCountAtDate = orderedPastDates.map(
+		date => tasks.filter(task => task.startDate < date).length
 	);
-	const now = format(new Date(), 'dd/MM/yyyy');
-	startDates.push('You are here\n' + now);
-
-	// Anzahl der Tasks die zum jeweiligen startdatum erledigt sind
-	const countDone = TasksDoneByStartDate.map(
-		task => TasksDoneByStartDate.filter(taskOther => task.startDate > taskOther.doneDate).length
+	const shiftTasksCountAtDate = tasksCountAtDate.map(count => count - 1);
+	const TasksDoneAtDate = orderedPastDates.map(
+		date => tasks.filter(task => task.doneDate < date).length
 	);
-
-	/*
-	const countTasks = TasksDoneByStartDate.map(task => TasksDoneByStartDate.indexOf(task));
-	const substractTasksDone = countTasks.map((taskIndex, index) => taskIndex - countDone[index]);
-	 	console.log(substractTasksDone);
-	console.log(TasksDoneByStartDate); */
+	const substractTasksDone = shiftTasksCountAtDate.map(
+		(task, index) => task - TasksDoneAtDate[index]
+	);
+	console.log(shiftTasksCountAtDate, TasksDoneAtDate, substractTasksDone);
+	console.log(orderedPastDates);
+	const Dates = orderedPastDates.map(date => format(new Date(date), 'k:m:s'));
 
 	const data = {
-		labels: startDates,
+		labels: Dates,
 		datasets: [
 			{
 				label: '',
-				data: countDone,
+				data: substractTasksDone,
 				backgroundColor: ['rgba(255, 99, 132, 0.2)'],
 				borderColor: ['rgba(54, 162, 235, 1)'],
 				borderWidth: 1,
@@ -54,5 +52,5 @@ export default function Graph() {
 		},
 	};
 
-	return <Line class="canvas" data={data} options={options} width="600px" height="auto" />;
+	return <Line class="canvas" data={data} options={options} width="600px" height="280px" />;
 }
