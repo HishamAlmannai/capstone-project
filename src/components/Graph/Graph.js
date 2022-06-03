@@ -24,7 +24,7 @@ export default function Graph() {
 	const substractTasksDone = shiftTasksCountAtDate.map(
 		(number, index) => number - tasksDoneAtDate[index]
 	);
-	const Dates = orderedPastDates.map(date => format(new Date(date), 'k:m:s'));
+	const Dates = orderedPastDates.map(date => format(new Date(date), 'k:m'));
 
 	const data = {
 		labels: Dates,
