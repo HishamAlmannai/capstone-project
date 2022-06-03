@@ -56,6 +56,7 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 0.75rem ;
     box-shadow: 0 0 1rem 0 #000;
     background-color: rgb(255, 251, 224);
+    width: 100vw
   }
 
   article.accordion {
@@ -76,6 +77,8 @@ const GlobalStyle = createGlobalStyle`
 
   span.task {
    margin-top: 0.5rem;
+    width:50vw;
+    word-wrap:break-word;
    &:hover{
      cursor: pointer
    }
