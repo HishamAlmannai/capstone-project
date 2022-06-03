@@ -50,6 +50,7 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 				type="text"
 				minLength="2"
 				maxLength="200"
+				pattern=".*\S+.*"
 				name="input"
 				placeholder="Stop Starting > Start finishing"
 				value={inputValue}

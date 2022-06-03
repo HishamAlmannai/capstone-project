@@ -89,11 +89,17 @@ const GlobalStyle = createGlobalStyle`
     &:hover{
       cursor: pointer
   }
-
+  }
   span.dueDate{
     margin-left: auto
   }
-  }
+  
+  input::placeholder{
+   text-align: center;
+}
+
+
+
 `;
 
 export default GlobalStyle;
