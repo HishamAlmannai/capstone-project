@@ -5,9 +5,9 @@ const GlobalStyle = createGlobalStyle`
  * {
   box-sizing: border-box;
    font-family:  -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-		Fira Sans, Droid Sans, Helvetica Neue, sans-serif; 
-  
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;   
  }
+
 
  html {
        background-color: rgb(255, 251, 224)
