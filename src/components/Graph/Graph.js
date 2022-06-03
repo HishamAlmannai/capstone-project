@@ -5,7 +5,6 @@ Chart.register(LineElement, LinearScale, CategoryScale, BarElement, PointElement
 import { Line } from 'react-chartjs-2';
 import { format } from 'date-fns';
 import { orderBy } from 'lodash';
-import { StyledGraph } from '../../../styles/Graph.styled';
 
 export default function Graph() {
 	const tasks = useStore(state => state.tasks);
@@ -62,9 +61,5 @@ export default function Graph() {
 		},
 	};
 
-	return (
-		<StyledGraph>
-			<Line class="canvas" data={data} options={options} />
-		</StyledGraph>
-	);
+	return <Line class="canvas" data={data} options={options} />;
 }

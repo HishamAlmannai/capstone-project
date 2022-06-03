@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import Button from '../src/components/Button/Button';
 import Graph from '../src/components/Graph/Graph';
 import useStore from '../src/services/useStore';
+import { StyledCard } from '../styles/Card.styled';
 
 export default function Home() {
 	//delete on mongoDB integration, only used for persist/localStorage (dynamic import with NO SSR form next.js docu --> https://nextjs.org/docs/advanced-features/dynamic-import)
@@ -21,18 +22,17 @@ export default function Home() {
 			<Form editMode={false} className="header" />
 			<h2 hidden>ToDo</h2>
 			<TaskList />
-			<article>
+			<StyledCard className="graph">
 				<Graph />
-			</article>
-			<article>
-				<Button
-					onClick={() => {
-						archiveTasks();
-					}}
-				>
-					Archive checked
-				</Button>
-			</article>
+			</StyledCard>
+			<Button
+				className="footer"
+				onClick={() => {
+					archiveTasks();
+				}}
+			>
+				Archive checked
+			</Button>
 		</main>
 	);
 }

@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import React, { useState } from 'react';
+import { StyledCard } from '../../../styles/Card.styled';
 import { StyledCheckbox } from '../../../styles/Input.styled';
 import StyledListItem from '../../../styles/ListItem.styled';
 import useStore from '../../services/useStore';
@@ -25,7 +26,7 @@ export default function Task(props) {
 
 	return (
 		<StyledListItem role="listitem">
-			<article className={expandedMode && 'accordion'}>
+			<StyledCard className={expandedMode && 'accordion'}>
 				{editMode ? (
 					<>
 						<div className="task">
@@ -107,7 +108,7 @@ export default function Task(props) {
 						)}
 					</>
 				)}
-			</article>
+			</StyledCard>
 		</StyledListItem>
 	);
 }

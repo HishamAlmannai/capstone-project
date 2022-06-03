@@ -8,9 +8,15 @@ const GlobalStyle = createGlobalStyle`
 		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;   
  }
 
+ :root {  
+	--primary-background-color: rgb(255, 251, 224);
+  --secondary-background-color: rgb(251, 245, 208);
+  --primary-font-size:16px
+}
 
  html {
-       background-color: rgb(255, 251, 224)
+       background-color: var(--primary-background-color);
+       font-style: var(--primary-font-face)
   }; 
 
   main {
@@ -24,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     text-align: center
     }
     
-    ul {
+  ul {
       list-style-type: none;
       margin: 0; 
       padding: 0; 
@@ -40,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
 
   input {
     font-size: 1rem;
+    background-color: var(--secondary-background-color)
   }
 
   input.header {
@@ -48,23 +55,20 @@ const GlobalStyle = createGlobalStyle`
 
   button {  
     font-size: 1rem;
-    margin: 1rem;
+    margin: 1rem 0 1rem 0 ;
     background-color: transparent;
     border-radius: 0.5rem;
-    padding: 0.5rem
-  }
-  
-  article {
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.75rem ;
-    box-shadow: 0 0 1rem 0 #000;
-    background-color: rgb(255, 251, 224);
-    width: 100%
+    padding: 0.5rem;
+    width: 100%;
   }
 
-  article.accordion {
-    padding: -20px;
+  button.footer {
+    border-radius: 0rem 0rem 2rem 2rem;
+    width: 100%;
+    box-shadow: 0 0 1rem 0 #000;
+    margin: -10px 0 1rem 0;
+    z-index: 10;
+    background-color: var(--primary-background-color)
   }
 
   div.task {
@@ -74,7 +78,6 @@ const GlobalStyle = createGlobalStyle`
   }
   div.edit {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
   }
