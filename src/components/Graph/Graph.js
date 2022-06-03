@@ -1,12 +1,13 @@
 import React from 'react';
 import useStore from '../../services/useStore';
 import { Chart, LineElement, LinearScale, CategoryScale, BarElement, PointElement } from 'chart.js';
-Chart.register(LineElement, LinearScale, CategoryScale, BarElement, PointElement);
 import { Line } from 'react-chartjs-2';
 import { format } from 'date-fns';
 import { orderBy } from 'lodash';
 
 export default function Graph() {
+	Chart.register(LineElement, LinearScale, CategoryScale, BarElement, PointElement);
+
 	const tasks = useStore(state => state.tasks);
 
 	const cleanPastDates = tasks
