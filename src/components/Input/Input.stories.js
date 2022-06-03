@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from './Input';
+import { StyledDate, StyledInput } from '../../../styles/Input.styled';
 
 const props = {
 	type: 'text',
@@ -12,9 +12,9 @@ export default {
 };
 
 export function Default() {
-	return <Input {...props} />;
+	return <StyledInput {...props} />;
 }
 
 export function date() {
-	return <input type="date" />;
+	return <StyledDate type="date" />;
 }

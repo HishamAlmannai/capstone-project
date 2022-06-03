@@ -5,15 +5,18 @@ const GlobalStyle = createGlobalStyle`
  * {
   box-sizing: border-box;
    font-family:  -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-		Fira Sans, Droid Sans, Helvetica Neue, sans-serif; 
-  
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;   
  }
 
+ :root {  
+	--primary-background-color: rgb(255, 251, 224);
+  --secondary-background-color: rgb(251, 245, 208);
+  --primary-font-size:16px
+}
+
  html {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
+       background-color: var(--primary-background-color);
+       font-style: var(--primary-font-face)
   }; 
 
   main {
@@ -27,25 +30,13 @@ const GlobalStyle = createGlobalStyle`
     text-align: center
     }
     
-    ul {
+  ul {
       list-style-type: none;
       margin: 0; 
       padding: 0; 
       position: relative
     }
-    
-    li {
-      transition: 1
-    }
-    
-    li:not(:first-child){
-      margin-top: -10px
-    }
-
-    li:hover {
-    transform: translateY(-10px);
-    }
-    
+      
   form {
     display: flex;  
     flex-direction: column;
@@ -55,40 +46,49 @@ const GlobalStyle = createGlobalStyle`
 
   input {
     font-size: 1rem;
+    background-color: var(--secondary-background-color)
+  }
+
+  input.header {
+    border-radius: 2rem 2rem 0 0;
   }
 
   button {  
     font-size: 1rem;
-    margin: 1rem;
-  }
-  
-  article {
-    display: flex;
-    flex-direction: column;
-    background-color: orange;
-    border-radius: 0.5rem 0.5rem 0 0;
-    box-shadow: 0 0 1rem 0 #000;
+    margin: 1rem 0 1rem 0 ;
+    background-color: transparent;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
   }
 
-  article.accordion {
-    background-color: green;
+  button.footer {
+    border-radius: 0rem 0rem 2rem 2rem;
+    width: 100%;
+    box-shadow: 0 0 1rem 0 #000;
+    margin: -10px 0 1rem 0;
+    z-index: 10;
+    background-color: var(--primary-background-color)
   }
 
   div.task {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-    
+    margin: 10px;
   }
   div.edit {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-around;
   }
 
   span.task {
-    background-color: black;
    margin-top: 0.5rem;
+    width:50vw;
+    word-wrap:break-word;
+   &:hover{
+     cursor: pointer
+   }
   }
 
   span.accordion {
@@ -96,12 +96,17 @@ const GlobalStyle = createGlobalStyle`
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-top: 0.5rem;
-
+    &:hover{
+      cursor: pointer
   }
-
+  }
   span.dueDate{
     margin-left: auto
   }
+  
+  input::placeholder{
+   text-align: center;
+}
 `;
 
 export default GlobalStyle;

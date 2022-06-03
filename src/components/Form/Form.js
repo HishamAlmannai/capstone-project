@@ -3,7 +3,7 @@ import { StyledDate, StyledInput } from '../../../styles/Input.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 
-export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
+export default function Form({ editMode, exitEditMode, id, handleSubmit, className }) {
 	const [inputValue, setInputValue] = useState('');
 	const [dueDateValue, setDueDateValue] = useState('');
 	const addTask = useStore(state => state.addTask);
@@ -33,6 +33,7 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 				event.preventDefault();
 				addTask(inputValue, dueDateValue);
 				setInputValue('');
+				setDueDateValue('');
 			}
 		}
 	}
@@ -49,6 +50,8 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 				type="text"
 				minLength="2"
 				maxLength="200"
+				pattern=".*\S+.*"
+				className={className ? className : ''}
 				name="input"
 				placeholder="Stop Starting > Start finishing"
 				value={inputValue}
@@ -61,7 +64,7 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 				type="date"
 				name="inputDueDate"
 				aria-label="inputDueDate"
-				placeholder="dd-mm-yyyy"
+				placeholder="Due Date"
 				value={dueDateValue}
 				onChange={event => {
 					setDueDateValue(event.target.value);
