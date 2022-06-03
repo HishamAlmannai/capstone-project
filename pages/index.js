@@ -18,7 +18,7 @@ export default function Home() {
 		<main>
 			<h1 hidden>ToNotDo</h1>
 			<h2 hidden>Create</h2>
-			<Form editMode={false} />
+			<Form editMode={false} className="header" />
 			<h2 hidden>ToDo</h2>
 			<TaskList />
 			<article>

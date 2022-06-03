@@ -34,12 +34,16 @@ const GlobalStyle = createGlobalStyle`
   form {
     display: flex;  
     flex-direction: column;
-    width: 95%;
+    width: 100%;
     margin: 0.5rem
   }
 
   input {
     font-size: 1rem;
+  }
+
+  input.header {
+    border-radius: 2rem 2rem 0 0;
   }
 
   button {  
@@ -56,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 0.75rem ;
     box-shadow: 0 0 1rem 0 #000;
     background-color: rgb(255, 251, 224);
-    width: 100vw
+    width: 100%
   }
 
   article.accordion {
@@ -72,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-around;
   }
 
   span.task {
@@ -100,9 +104,6 @@ const GlobalStyle = createGlobalStyle`
   input::placeholder{
    text-align: center;
 }
-
-
-
 `;
 
 export default GlobalStyle;
