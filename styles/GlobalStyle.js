@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;  
     flex-direction: column;
     width: 100%;
-    margin: 0.5rem
+    margin: 0 0.5 0 0.5rem
   }
 
   input {
@@ -73,7 +73,7 @@ margin: 0 0.5rem 0 0.5rem;
 
   div.task {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 30px 3fr 1fr;
     margin: 10px;
   }
   div.edit {
@@ -83,8 +83,8 @@ margin: 0 0.5rem 0 0.5rem;
   }
 
   span.task {
-   margin-top: 0.5rem;
-    width:50vw;
+   margin-top: 0rem;
+    width:60vw;
     word-wrap:break-word;
    &:hover{
      cursor: pointer
@@ -95,7 +95,7 @@ margin: 0 0.5rem 0 0.5rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-top: 0.5rem;
+    margin-top: 0rem;
     &:hover{
       cursor: pointer
   }

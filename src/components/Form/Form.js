@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyledDate, StyledInput } from '../../../styles/Input.styled';
+import { StyledDate, StyledEditInput, StyledInput } from '../../../styles/Input.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 
@@ -45,19 +45,35 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 				onSubmit(event, inputValue, dueDateValue);
 			}}
 		>
-			<StyledInput
-				required
-				type="text"
-				minLength="2"
-				maxLength="200"
-				pattern=".*\S+.*"
-				name="input"
-				placeholder="Stop Starting > Start finishing"
-				value={inputValue}
-				onChange={event => {
-					setInputValue(event.target.value);
-				}}
-			/>
+			{' '}
+			{editMode ? (
+				<StyledEditInput
+					required
+					minLength="2"
+					maxLength="200"
+					pattern=".*\S+.*"
+					name="input"
+					placeholder="Stop Starting > Start finishing"
+					value={inputValue}
+					onChange={event => {
+						setInputValue(event.target.value);
+					}}
+				/>
+			) : (
+				<StyledInput
+					required
+					type="text"
+					minLength="2"
+					maxLength="200"
+					pattern=".*\S+.*"
+					name="input"
+					placeholder="Stop Starting > Start finishing"
+					value={inputValue}
+					onChange={event => {
+						setInputValue(event.target.value);
+					}}
+				/>
+			)}
 			<StyledDate
 				required
 				type="date"
