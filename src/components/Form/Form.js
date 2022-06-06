@@ -3,7 +3,7 @@ import { StyledDate, StyledInput } from '../../../styles/Input.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 
-export default function Form({ editMode, exitEditMode, id, handleSubmit, className }) {
+export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 	const [inputValue, setInputValue] = useState('');
 	const [dueDateValue, setDueDateValue] = useState('');
 	const addTask = useStore(state => state.addTask);
@@ -51,7 +51,6 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit, classNa
 				minLength="2"
 				maxLength="200"
 				pattern=".*\S+.*"
-				className={className ? className : ''}
 				name="input"
 				placeholder="Stop Starting > Start finishing"
 				value={inputValue}

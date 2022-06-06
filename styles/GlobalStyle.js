@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
 	--primary-background-color: rgb(255, 251, 224);
   --secondary-background-color: rgb(251, 245, 208);
   --primary-font-size:16px
+  --primary-border-radius:0,75rem
 }
 
  html {
@@ -49,21 +50,20 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--secondary-background-color)
   }
 
-  input.header {
-    border-radius: 2rem 2rem 0 0;
-  }
-
   button {  
     font-size: 1rem;
-    margin: 1rem 0 1rem 0 ;
+    margin:0.5rem 0 2rem 0 ;
     background-color: transparent;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem; 
     padding: 0.5rem;
     width: 100%;
   }
+button.edit {
+margin: 0 0.5rem 0 0.5rem;
 
-  button.footer {
-    border-radius: 0rem 0rem 2rem 2rem;
+} 
+ button.footer {
+    border-radius: 0,5rem;
     width: 100%;
     box-shadow: 0 0 1rem 0 #000;
     margin: -10px 0 1rem 0;
@@ -79,7 +79,7 @@ const GlobalStyle = createGlobalStyle`
   div.edit {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
   span.task {

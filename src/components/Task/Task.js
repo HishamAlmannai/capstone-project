@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import React, { useState } from 'react';
 import { StyledCard } from '../../../styles/Card.styled';
-import { StyledCheckbox } from '../../../styles/Input.styled';
+import Checkbox from '../Checkbox/Checkbox';
 import StyledListItem from '../../../styles/ListItem.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
@@ -20,7 +20,6 @@ export default function Task(props) {
 		setEditMode(false);
 		setHasSubmit(false);
 	};
-	const checkTask = useStore(state => state.checkTask);
 
 	const formatDueDate = format(new Date(dueDate), 'dd/MM/yyyy');
 
@@ -30,14 +29,7 @@ export default function Task(props) {
 				{editMode ? (
 					<>
 						<div className="task">
-							<StyledCheckbox
-								type="checkbox"
-								name="checkbox"
-								checked={done}
-								onChange={() => {
-									checkTask(id, done);
-								}}
-							/>
+							<Checkbox state={done} id={id} />
 							<Form
 								editMode
 								handleSubmit={hasSubmit}
@@ -49,6 +41,7 @@ export default function Task(props) {
 							<Button
 								type="submit"
 								name="save"
+								class="edit"
 								form={id}
 								onClick={() => setHasSubmit(true)}
 							>
@@ -56,6 +49,7 @@ export default function Task(props) {
 							</Button>
 							<Button
 								name="delete"
+								class="edit"
 								onClick={() => {
 									deleteTask(id);
 								}}
@@ -67,14 +61,7 @@ export default function Task(props) {
 				) : (
 					<>
 						<div className="task">
-							<StyledCheckbox
-								type="checkbox"
-								name="checkbox"
-								checked={done}
-								onChange={() => {
-									checkTask(id);
-								}}
-							/>
+							<Checkbox state={done} id={id} />
 							<span
 								className={expandedMode ? 'accordion' : 'task'}
 								onClick={() => {
@@ -90,6 +77,7 @@ export default function Task(props) {
 							<div className="edit">
 								<Button
 									name="edit"
+									class="edit"
 									onClick={() => {
 										setEditMode(true);
 									}}
@@ -98,6 +86,7 @@ export default function Task(props) {
 								</Button>
 								<Button
 									name="delete"
+									class="edit"
 									onClick={() => {
 										deleteTask(id);
 									}}

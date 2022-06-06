@@ -19,14 +19,14 @@ export default function Home() {
 		<main>
 			<h1 hidden>ToNotDo</h1>
 			<h2 hidden>Create</h2>
-			<Form editMode={false} className="header" />
+			<Form editMode={false} />
 			<h2 hidden>ToDo</h2>
 			<TaskList />
 			<StyledCard className="graph">
 				<Graph />
 			</StyledCard>
 			<Button
-				className="footer"
+				class="footer"
 				onClick={() => {
 					archiveTasks();
 				}}
