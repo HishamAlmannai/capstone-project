@@ -4,11 +4,13 @@ const CheckboxContainer = styled.div`
 	display: inline-block;
 	vertical-align: middle;
 `;
+
 const Icon = styled.svg`
 	fill: none;
-	stroke: rgba(54, 162, 235, 1);
-	stroke-width: 2px;
+	stroke: var(--secondary-color);
+	stroke-width: 3px;
 `;
+
 // Hide checkbox visually but remain accessible to screen readers.
 
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
