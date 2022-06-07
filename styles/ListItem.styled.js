@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledListItem = styled.li`
+	list-style-type: none;
 	transform: translateY(0);
 	margin-top: -10px;
 	transition: all 150ms;

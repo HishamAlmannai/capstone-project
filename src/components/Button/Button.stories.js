@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import { StyledButton } from '../../../styles/Button.styled';
 
 const props = {
 	buttonText: 'String',
@@ -10,5 +10,5 @@ export default {
 };
 
 export function Default() {
-	return <Button {...props}>Button</Button>;
+	return <StyledButton {...props}>Button</StyledButton>;
 }
