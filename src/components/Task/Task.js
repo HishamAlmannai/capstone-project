@@ -6,6 +6,8 @@ import StyledListItem from '../../../styles/ListItem.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 import Form from '../Form/Form';
+import { StyledDiv } from '../../../styles/Div.styled';
+import { StyledSpan } from '../../../styles/Span.styled';
 
 export default function Task(props) {
 	const {
@@ -28,7 +30,7 @@ export default function Task(props) {
 			<StyledCard className={expandedMode && 'accordion'}>
 				{editMode ? (
 					<>
-						<div className="task">
+						<StyledDiv editMode className="task">
 							<Checkbox state={done} id={id} />
 							<Form
 								editMode
@@ -36,8 +38,8 @@ export default function Task(props) {
 								id={id}
 								exitEditMode={exitEditMode}
 							/>
-						</div>
-						<div className="edit">
+						</StyledDiv>
+						<StyledDiv className="edit">
 							<Button
 								type="submit"
 								name="save"
@@ -56,25 +58,25 @@ export default function Task(props) {
 							>
 								Delete
 							</Button>
-						</div>
+						</StyledDiv>
 					</>
 				) : (
 					<>
-						<div className="task">
+						<StyledDiv className="task">
 							<Checkbox state={done} id={id} />
-							<span
+							<StyledSpan
 								className={expandedMode ? 'accordion' : 'task'}
 								onClick={() => {
 									setExpandedMode(!expandedMode);
 								}}
 							>
 								{name}
-							</span>
+							</StyledSpan>
 
-							<span className="dueDate">{formatDueDate}</span>
-						</div>
+							<StyledSpan className="dueDate">{formatDueDate}</StyledSpan>
+						</StyledDiv>
 						{!expandedMode && (
-							<div className="edit">
+							<StyledDiv className="edit">
 								<Button
 									name="edit"
 									class="edit"
@@ -93,7 +95,7 @@ export default function Task(props) {
 								>
 									Delete
 								</Button>
-							</div>
+							</StyledDiv>
 						)}
 					</>
 				)}

@@ -13,7 +13,6 @@ const Icon = styled.svg`
 
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
 	opacity: 0%;
-
 	width: 20px;
 	height: 20px;
 	margin: -1px;

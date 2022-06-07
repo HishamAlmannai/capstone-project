@@ -11,10 +11,10 @@ export const StyledCard = styled.div`
 	box-shadow: 0 0 1rem 0 #000;
 
 	&.accordion {
-		padding: -20px;
 	}
 
 	&.graph {
 		padding: 2rem;
+		margin-top: -10px;
 	}
 `;

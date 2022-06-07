@@ -50,7 +50,7 @@ export default function Graph() {
 				},
 				title: {
 					display: true,
-					text: 'Tasks done',
+					text: 'Tasks',
 				},
 			},
 			x: {
@@ -62,5 +62,5 @@ export default function Graph() {
 		},
 	};
 
-	return <Line class="canvas" data={data} options={options} />;
+	return <Line className="canvas" data={data} options={options} />;
 }

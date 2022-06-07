@@ -1,20 +1,24 @@
 import styled from 'styled-components';
 
 export const StyledInput = styled.input`
+	font-size: 1rem;
+	background-color: var(--secondary-background-color);
 	height: 2rem;
 	border-radius: 0.5rem;
 	margin: 0rem 0 0.5rem 0;
-`;
+	::placeholder {
+		text-align: center;
+	}
 
-export const StyledEditInput = styled.textarea`
-	font-size: 1rem;
-	padding: 0.5rem;
-	height: 4rem;
-	border-radius: 0.5rem;
-	margin: 0rem 0 0.5rem 0;
-`;
-
-export const StyledDate = styled.input`
-	border-radius: 0.5rem;
-	text-align: center;
+	&.textarea {
+		font-size: 1rem;
+		padding: 0.5rem;
+		height: 4rem;
+		border-radius: 0.5rem;
+		margin: 0rem 0 0.5rem 0;
+	}
+	&.date {
+		border-radius: 0.5rem;
+		text-align: center;
+	}
 `;
