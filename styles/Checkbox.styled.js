@@ -28,12 +28,12 @@ const StyledCheckbox = styled.div`
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	box-shadow: ${props => !props.checked && '0 0 0 3px whitesmoke'};
+	box-shadow: ${props => !props.checked && '0 0 0 2px #e3e3e3'};
 	border-radius: 3px;
 	transition: all 150ms;
 
 	${HiddenCheckbox}:focus + & {
-		box-shadow: 0 0 0 3px white;
+		box-shadow: 0 0 0 3px #666666;
 	}
 
 	${Icon} {

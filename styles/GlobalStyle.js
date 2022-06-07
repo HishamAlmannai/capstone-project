@@ -5,8 +5,8 @@ const GlobalStyle = createGlobalStyle`
  * {
   box-sizing: border-box;
    font-family:  -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;   
- }
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;  
+     }
 
  :root {  
 	--primary-background-color: #fffbe0;
@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
   --primary-border-radius:0,75rem
   --primary-font-color: #000000 
   --secondary-font-color: #666666
+  
 }
 
  body {
