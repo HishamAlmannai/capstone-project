@@ -9,6 +9,9 @@ export const StyledInput = styled.input`
 	::placeholder {
 		text-align: center;
 	}
+	:focus {
+		outline-color: var(--secondary-color);
+	}
 
 	&.textarea {
 		font-size: 1rem;
