@@ -141,7 +141,7 @@ export const data = [
 		id: nanoid(),
 		name: 'Add form with input and submit-button',
 		done: false,
-		dueDate: '2025-03-12',
+		dueDate: '2022-06-11',
 		doneDate: '2022-03-30T11:28:44Z',
 		startDate: '2022-03-22T11:20:44Z',
 	},
