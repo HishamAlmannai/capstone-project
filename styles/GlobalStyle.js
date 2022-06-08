@@ -5,13 +5,22 @@ const GlobalStyle = createGlobalStyle`
  * {
   box-sizing: border-box;
    font-family:  -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;   
- }
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;  
+     }
 
  :root {  
-	--primary-background-color: rgb(255, 251, 224);
-  --secondary-background-color: rgb(251, 245, 208);
+	--primary-background-color: #fffbe0;
+  --secondary-background-color: #fbf5d0;
+  --secondary-color: #38a3eb;
   --primary-font-size:16px
+  --primary-border-radius:0,75rem
+  --primary-font-color: #000000 
+  --secondary-font-color: #666666
+  
+}
+
+ body {
+  margin: 0;
 }
 
  html {
@@ -19,94 +28,20 @@ const GlobalStyle = createGlobalStyle`
        font-style: var(--primary-font-face)
   }; 
 
-  main {
+ main {
     display: flex;
     flex-direction:column;
     justify-content: center;
     align-items: center ;
   }
 
-  h2 {
-    text-align: center
-    }
-    
-  ul {
+ ul {
       list-style-type: none;
       margin: 0; 
       padding: 0; 
-      position: relative
+      width: 100vw
     }
-      
-  form {
-    display: flex;  
-    flex-direction: column;
-    width: 100%;
-    margin: 0.5rem
-  }
 
-  input {
-    font-size: 1rem;
-    background-color: var(--secondary-background-color)
-  }
-
-  input.header {
-    border-radius: 2rem 2rem 0 0;
-  }
-
-  button {  
-    font-size: 1rem;
-    margin: 1rem 0 1rem 0 ;
-    background-color: transparent;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    width: 100%;
-  }
-
-  button.footer {
-    border-radius: 0rem 0rem 2rem 2rem;
-    width: 100%;
-    box-shadow: 0 0 1rem 0 #000;
-    margin: -10px 0 1rem 0;
-    z-index: 10;
-    background-color: var(--primary-background-color)
-  }
-
-  div.task {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    margin: 10px;
-  }
-  div.edit {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  span.task {
-   margin-top: 0.5rem;
-    width:50vw;
-    word-wrap:break-word;
-   &:hover{
-     cursor: pointer
-   }
-  }
-
-  span.accordion {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    margin-top: 0.5rem;
-    &:hover{
-      cursor: pointer
-  }
-  }
-  span.dueDate{
-    margin-left: auto
-  }
-  
-  input::placeholder{
-   text-align: center;
-}
 `;
 
 export default GlobalStyle;

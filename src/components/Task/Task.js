@@ -1,11 +1,13 @@
 import { format } from 'date-fns';
 import React, { useState } from 'react';
 import { StyledCard } from '../../../styles/Card.styled';
-import { StyledCheckbox } from '../../../styles/Input.styled';
+import Checkbox from '../Checkbox/Checkbox';
 import StyledListItem from '../../../styles/ListItem.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 import Form from '../Form/Form';
+import { StyledDiv } from '../../../styles/Div.styled';
+import { StyledSpan } from '../../../styles/Span.styled';
 
 export default function Task(props) {
 	const {
@@ -20,7 +22,6 @@ export default function Task(props) {
 		setEditMode(false);
 		setHasSubmit(false);
 	};
-	const checkTask = useStore(state => state.checkTask);
 
 	const formatDueDate = format(new Date(dueDate), 'dd/MM/yyyy');
 
@@ -29,26 +30,20 @@ export default function Task(props) {
 			<StyledCard className={expandedMode && 'accordion'}>
 				{editMode ? (
 					<>
-						<div className="task">
-							<StyledCheckbox
-								type="checkbox"
-								name="checkbox"
-								checked={done}
-								onChange={() => {
-									checkTask(id, done);
-								}}
-							/>
+						<StyledDiv editMode className="task">
+							<Checkbox state={done} id={id} />
 							<Form
 								editMode
 								handleSubmit={hasSubmit}
 								id={id}
 								exitEditMode={exitEditMode}
 							/>
-						</div>
-						<div className="edit">
+						</StyledDiv>
+						<StyledDiv className="edit">
 							<Button
 								type="submit"
 								name="save"
+								class="edit"
 								form={id}
 								onClick={() => setHasSubmit(true)}
 							>
@@ -56,40 +51,35 @@ export default function Task(props) {
 							</Button>
 							<Button
 								name="delete"
+								class="edit"
 								onClick={() => {
 									deleteTask(id);
 								}}
 							>
 								Delete
 							</Button>
-						</div>
+						</StyledDiv>
 					</>
 				) : (
 					<>
-						<div className="task">
-							<StyledCheckbox
-								type="checkbox"
-								name="checkbox"
-								checked={done}
-								onChange={() => {
-									checkTask(id);
-								}}
-							/>
-							<span
+						<StyledDiv className="task">
+							<Checkbox state={done} id={id} />
+							<StyledSpan
 								className={expandedMode ? 'accordion' : 'task'}
 								onClick={() => {
 									setExpandedMode(!expandedMode);
 								}}
 							>
 								{name}
-							</span>
+							</StyledSpan>
 
-							<span className="dueDate">{formatDueDate}</span>
-						</div>
+							<StyledSpan className="dueDate">{formatDueDate}</StyledSpan>
+						</StyledDiv>
 						{!expandedMode && (
-							<div className="edit">
+							<StyledDiv className="edit">
 								<Button
 									name="edit"
+									class="edit"
 									onClick={() => {
 										setEditMode(true);
 									}}
@@ -98,13 +88,14 @@ export default function Task(props) {
 								</Button>
 								<Button
 									name="delete"
+									class="edit"
 									onClick={() => {
 										deleteTask(id);
 									}}
 								>
 									Delete
 								</Button>
-							</div>
+							</StyledDiv>
 						)}
 					</>
 				)}

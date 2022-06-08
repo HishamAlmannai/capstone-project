@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { StyledDate, StyledInput } from '../../../styles/Input.styled';
+import { StyledForm } from '../../../styles/Form.styled';
+import { StyledInput } from '../../../styles/Input.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 
-export default function Form({ editMode, exitEditMode, id, handleSubmit, className }) {
+export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 	const [inputValue, setInputValue] = useState('');
 	const [dueDateValue, setDueDateValue] = useState('');
 	const addTask = useStore(state => state.addTask);
@@ -39,42 +40,82 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit, classNa
 	}
 
 	return (
-		<form
-			name="form"
-			onSubmit={event => {
-				onSubmit(event, inputValue, dueDateValue);
-			}}
-		>
-			<StyledInput
-				required
-				type="text"
-				minLength="2"
-				maxLength="200"
-				pattern=".*\S+.*"
-				className={className ? className : ''}
-				name="input"
-				placeholder="Stop Starting > Start finishing"
-				value={inputValue}
-				onChange={event => {
-					setInputValue(event.target.value);
-				}}
-			/>
-			<StyledDate
-				required
-				type="date"
-				name="inputDueDate"
-				aria-label="inputDueDate"
-				placeholder="Due Date"
-				value={dueDateValue}
-				onChange={event => {
-					setDueDateValue(event.target.value);
-				}}
-			/>
-			{!editMode && (
-				<Button type="submit" name="save">
-					Save
-				</Button>
+		<>
+			{' '}
+			{editMode ? (
+				<StyledForm
+					editMode
+					name="form"
+					widthSelf="50%"
+					onSubmit={event => {
+						onSubmit(event, inputValue, dueDateValue);
+					}}
+				>
+					<StyledInput
+						required
+						minLength="2"
+						maxLength="200"
+						pattern=".*\S+.*"
+						name="input"
+						type="textarea"
+						placeholder="empty"
+						value={inputValue}
+						onChange={event => {
+							setInputValue(event.target.value);
+						}}
+					/>
+					<StyledInput
+						required
+						type="date"
+						name="inputDueDate"
+						aria-label="inputDueDate"
+						placeholder="Due Date"
+						value={dueDateValue}
+						onChange={event => {
+							setDueDateValue(event.target.value);
+						}}
+					/>
+				</StyledForm>
+			) : (
+				<StyledForm
+					name="form"
+					editMode={false}
+					onSubmit={event => {
+						onSubmit(event, inputValue, dueDateValue);
+					}}
+				>
+					<StyledInput
+						required
+						type="text"
+						minLength="2"
+						maxLength="200"
+						pattern=".*\S+.*"
+						name="input"
+						placeholder="Stop Starting > Start finishing"
+						value={inputValue}
+						onChange={event => {
+							setInputValue(event.target.value);
+						}}
+					/>
+
+					<StyledInput
+						required
+						type="date"
+						name="inputDueDate"
+						aria-label="inputDueDate"
+						placeholder="Due Date"
+						value={dueDateValue}
+						onChange={event => {
+							setDueDateValue(event.target.value);
+						}}
+					/>
+					{!editMode && (
+						<Button type="submit" name="save">
+							Save
+						</Button>
+					)}
+				</StyledForm>
 			)}
-		</form>
+		</>
 	);
 }

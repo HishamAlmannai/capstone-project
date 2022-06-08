@@ -13,7 +13,7 @@ export default function Graph() {
 	const cleanPastDates = tasks
 		.flatMap(task => [task.startDate, task.doneDate])
 		.filter(date => date !== undefined);
-	const orderedPastDates = orderBy(cleanPastDates);
+	let orderedPastDates = orderBy(cleanPastDates);
 
 	const tasksCountAtDate = orderedPastDates.map(
 		date => tasks.filter(task => task.startDate < date).length
@@ -25,7 +25,7 @@ export default function Graph() {
 	const substractTasksDone = shiftTasksCountAtDate.map(
 		(number, index) => number - tasksDoneAtDate[index]
 	);
-	const Dates = orderedPastDates.map(date => format(new Date(date), 'k:m'));
+	let Dates = orderedPastDates.map(date => format(new Date(date), 'k:mm'));
 
 	const data = {
 		labels: Dates,
@@ -50,7 +50,7 @@ export default function Graph() {
 				},
 				title: {
 					display: true,
-					text: 'Tasks done',
+					text: 'Tasks',
 				},
 			},
 			x: {
@@ -62,5 +62,5 @@ export default function Graph() {
 		},
 	};
 
-	return <Line class="canvas" data={data} options={options} />;
+	return <Line className="canvas" data={data} options={options} />;
 }
