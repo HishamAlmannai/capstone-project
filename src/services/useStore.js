@@ -87,7 +87,6 @@ const useStore = create(set => ({
 	updateTask: async (id, inputValue, dueDateValue) => {
 		const editedTask = {
 			name: inputValue,
-
 			dueDate: dueDateValue,
 		};
 		try {
@@ -95,19 +94,15 @@ const useStore = create(set => ({
 				method: 'PUT',
 				body: JSON.stringify(editedTask),
 			});
-			await response.body;
+			await response.json();
 			set(state => {
 				return {
 					tasks: state.tasks.map(task =>
 						task.id === id
 							? {
 									...task,
-									id: task.id,
-									name: task.name,
-									done: task.done,
-									dueDate: task.dueDate,
-									doneDate: task.doneDate,
-									startDate: task.startDate,
+									name: inputValue,
+									dueDate: dueDateValue,
 							  }
 							: task
 					),
