@@ -39,25 +39,23 @@ const useStore = create(set => ({
 		}
 	},
 
-	checkTask: async id => {
+	checkTask: async (id, done) => {
+		const doneDate = done ? new Date(0) : new Date();
 		const editedTask = {
-			name: name,
-			done: false,
-			dueDate: id,
-			doneDate: new Date(0),
-			startDate: new Date(),
+			done: !done,
+			doneDate: doneDate,
 		};
 		try {
 			const response = await fetch('/api/task/' + id, {
 				method: 'PUT',
 				body: JSON.stringify(editedTask),
 			});
-			await response.body;
+			await response.json();
 			set(state => {
 				return {
 					tasks: state.tasks.map(task => {
 						if (task.id === id) {
-							return { ...task, done: !task.done, doneDate: new Date() };
+							return { ...task, done: !done, doneDate: doneDate };
 						} else {
 							return task;
 						}
@@ -102,7 +100,7 @@ const useStore = create(set => ({
 							? {
 									...task,
 									name: inputValue,
-									dueDate: dueDateValue,
+									dueDate: new Date(dueDateValue),
 							  }
 							: task
 					),
