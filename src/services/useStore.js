@@ -67,13 +67,22 @@ const useStore = create(set => ({
 		}
 	},
 
-	deleteTask: id => {
-		set(state => {
-			return {
-				tasks: state.tasks.filter(task => task.id !== id),
-			};
-		});
+	deleteTask: async id => {
+		try {
+			const response = await fetch('/api/task/' + id, {
+				method: 'DELETE',
+			});
+			await response.json();
+			set(state => {
+				return {
+					tasks: state.tasks.filter(task => task.id !== id),
+				};
+			});
+		} catch (error) {
+			console.error(`Upps das war ein Fehler: ${error}`);
+		}
 	},
+
 	archiveTasks: () => {
 		set(state => {
 			return {
