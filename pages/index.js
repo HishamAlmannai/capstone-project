@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 
 export default function Home() {
 	const archiveTasks = useStore(state => state.archiveTasks);
+	const tasks = useStore(state => state.tasks);
 
 	useEffect(() => {
 		useStore.getState().fetchTasks();
@@ -26,7 +27,7 @@ export default function Home() {
 			<Button
 				class="footer"
 				onClick={() => {
-					archiveTasks();
+					archiveTasks(tasks);
 				}}
 			>
 				Archive checked

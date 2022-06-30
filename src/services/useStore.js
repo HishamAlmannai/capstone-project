@@ -13,8 +13,6 @@ const useStore = create(set => ({
 		}
 	},
 
-	archive: [],
-
 	addTask: async (name, dueDate) => {
 		const newTask = {
 			name: name,
@@ -83,14 +81,6 @@ const useStore = create(set => ({
 		}
 	},
 
-	archiveTasks: () => {
-		set(state => {
-			return {
-				archive: state.tasks.filter(task => task.done),
-				tasks: state.tasks.filter(task => !task.done),
-			};
-		});
-	},
 	updateTask: async (id, inputValue, dueDateValue) => {
 		const editedTask = {
 			name: inputValue,
@@ -114,6 +104,36 @@ const useStore = create(set => ({
 							: task
 					),
 					entryToUpdate: null,
+				};
+			});
+		} catch (error) {
+			console.error(`Upps das war ein Fehler: ${error}`);
+		}
+	},
+
+	archives: [],
+	fetchArchive: async () => {
+		try {
+			const response = await fetch('/api/archives');
+			const data = await response.json();
+			set({ Archives: data });
+		} catch (error) {
+			console.error(`Upps das war ein Fehler: ${error}`);
+		}
+	},
+
+	archiveTasks: async tasks => {
+		const archivedTasks = tasks.filter(task => task.done);
+		try {
+			const response = await fetch('/api/archive', {
+				method: 'POST',
+				body: JSON.stringify(archivedTasks),
+			});
+			await response.json();
+			set(state => {
+				return {
+					archives: state.tasks.filter(task => task.done),
+					tasks: state.tasks.filter(task => !task.done),
 				};
 			});
 		} catch (error) {
