@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
-//const url = process.env.DB_CONNECTION;
-const url = 'mongodb://localhost:27017/notToDo';
+const url = process.env.DB_CONNECTION;
+//const url = 'mongodb://localhost:27017/notToDo';
 
 export async function dbConnect() {
 	try {
