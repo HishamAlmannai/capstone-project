@@ -15,8 +15,7 @@ export default function Checkbox({ state, id }) {
 			<HiddenCheckbox
 				checked={state}
 				onChange={() => {
-					checkTask(id);
-					console.log('next');
+					checkTask(id, state);
 				}}
 			/>
 			<StyledCheckbox checked={state}>

@@ -17,7 +17,7 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 			setInputValue(task.name);
 			setDueDateValue(task.dueDate);
 		}
-	}, []);
+	}, [editMode, id, tasks]);
 
 	if (handleSubmit) {
 		onSubmit(event, inputValue, dueDateValue);
