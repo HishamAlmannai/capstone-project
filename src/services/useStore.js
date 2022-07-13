@@ -9,7 +9,7 @@ const useStore = create(set => ({
 			const data = await response.json();
 			set({ tasks: data });
 		} catch (error) {
-			console.error(`Upps das war ein Fehler: ${error}`);
+			console.error(`Uppps das war ein Fehler: ${error}`);
 		}
 	},
 
