@@ -7,7 +7,7 @@ export default function Button(props) {
 			type={props.type ? 'submit' : 'button'}
 			name={props.name}
 			className={props.class}
-			aria-label={props.name}
+			//aria-label={props.name}
 			onClick={props.onClick}
 		>
 			{props.children}
