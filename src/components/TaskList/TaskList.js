@@ -1,9 +1,15 @@
 import React from 'react';
-import useStore from '../../services/useStore';
+import useSWR from 'swr';
 import Task from '../Task/Task';
 
 export default function TaskList() {
-	const tasks = useStore(state => state.tasks);
+	const { data: tasks, error } = useSWR('/api/tasks');
+	if (error) {
+		return <p>Error: {error.message}</p>;
+	}
+	if (!tasks) {
+		return <p>loading...</p>;
+	}
 
 	return (
 		<ul>
