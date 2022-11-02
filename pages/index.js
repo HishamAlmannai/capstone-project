@@ -7,6 +7,7 @@ import { SWRConfig } from 'swr';
 import swrFetcher from '../src/lib/swr-fetcher';
 import getTasks from '../src/services/get-tasks';
 import getArchives from '../src/services/get-archives';
+import useStore from '../src/services/useStore';
 
 export async function getStaticProps() {
 	const tasks = await getTasks();
@@ -23,6 +24,9 @@ export async function getStaticProps() {
 }
 
 export default function Home({ fallback }) {
+	const tasks = useStore(state => state.tasks);
+	const archiveTasks = useStore(state => state.archiveTasks);
+
 	return (
 		<main>
 			<SWRConfig value={{ fetcher: swrFetcher, fallback }}>
@@ -36,13 +40,9 @@ export default function Home({ fallback }) {
 				</StyledCard>
 				<Button
 					class="footer"
-					/*
-				onClick={() => {
-					archiveTasks(tasks);
-				
-				}
-			}
-				*/
+					onClick={() => {
+						archiveTasks(tasks);
+					}}
 				>
 					Archive checked
 				</Button>

@@ -10,9 +10,9 @@ export default async function getArchives() {
 			id,
 			name,
 			done,
-			dueDate,
-			doneDate,
-			startDate,
+			dueDate: String(dueDate),
+			doneDate: String(doneDate),
+			startDate: String(startDate),
 		};
 	});
 }

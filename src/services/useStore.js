@@ -1,5 +1,6 @@
 import create from 'zustand';
 import produce from 'immer';
+import { mutate } from 'swr';
 
 const useStore = create(set => ({
 	tasks: [],
@@ -11,6 +12,7 @@ const useStore = create(set => ({
 		} catch (error) {
 			console.error(`Uppps das war ein Fehler: ${error}`);
 		}
+		mutate('/api/tasks');
 	},
 
 	addTask: async (name, dueDate) => {
@@ -35,6 +37,7 @@ const useStore = create(set => ({
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
+		mutate('/api/tasks');
 	},
 
 	checkTask: async (id, done) => {
@@ -63,6 +66,7 @@ const useStore = create(set => ({
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
+		mutate('/api/tasks');
 	},
 
 	deleteTask: async id => {
@@ -79,6 +83,7 @@ const useStore = create(set => ({
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
+		mutate('/api/tasks');
 	},
 
 	updateTask: async (id, inputValue, dueDateValue) => {
@@ -109,6 +114,7 @@ const useStore = create(set => ({
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
+		mutate('/api/tasks');
 	},
 
 	archives: [],
@@ -139,6 +145,7 @@ const useStore = create(set => ({
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
+		mutate('/api/tasks');
 	},
 }));
 

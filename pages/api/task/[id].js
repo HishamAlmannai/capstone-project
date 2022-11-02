@@ -17,7 +17,6 @@ export default async function handler(req, res) {
 		const updatedTask = await Task.findByIdAndUpdate(id, newTaskData, {
 			new: true,
 		});
-
 		res.status(200).json({
 			message: 'task edited',
 			entry: updatedTask,
