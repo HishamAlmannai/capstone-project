@@ -12,6 +12,8 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 	const addTask = useStore(state => state.addTask);
 	const updateTask = useStore(state => state.updateTask);
 
+	const { data: tasks, error } = useSWR('/api/tasks');
+
 	useEffect(() => {
 		if (editMode) {
 			const task = tasks.find(element => element.id === id);
@@ -20,7 +22,6 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 		}
 	}, [editMode, id, tasks]);
 
-	const { data: tasks, error } = useSWR('/api/tasks');
 	if (error) {
 		return <p>Error: {error.message}</p>;
 	}

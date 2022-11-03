@@ -117,17 +117,6 @@ const useStore = create(set => ({
 		mutate('/api/tasks');
 	},
 
-	archives: [],
-	fetchArchive: async () => {
-		try {
-			const response = await fetch('/api/archives');
-			const data = await response.json();
-			set({ archives: data });
-		} catch (error) {
-			console.error(`Upps das war ein Fehler: ${error}`);
-		}
-	},
-
 	archiveTasks: async tasks => {
 		const archivedTasks = tasks.filter(task => task.done);
 		try {

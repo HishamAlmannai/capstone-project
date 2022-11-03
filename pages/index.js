@@ -3,7 +3,7 @@ import Graph from '../src/components/Graph/Graph';
 import { StyledCard } from '../styles/Card.styled';
 import TaskList from '../src/components/TaskList/TaskList';
 import Form from '../src/components/Form/Form';
-import { SWRConfig } from 'swr';
+import useSWR, { SWRConfig } from 'swr';
 import swrFetcher from '../src/lib/swr-fetcher';
 import getTasks from '../src/services/get-tasks';
 import getArchives from '../src/services/get-archives';
@@ -23,9 +23,16 @@ export async function getStaticProps() {
 }
 
 export default function Home({ fallback }) {
-	const tasks = useStore(state => state.tasks);
 	const archiveTasks = useStore(state => state.archiveTasks);
 
+	const { data: archives, error } = useSWR('/api/archives');
+	const { data: tasks } = useSWR('/api/tasks');
+	if (error) {
+		return <p>Error: {error.message}</p>;
+	}
+	if (!archives) {
+		return <p>loading...</p>;
+	}
 	return (
 		<main>
 			<SWRConfig value={{ fetcher: swrFetcher, fallback }}>
