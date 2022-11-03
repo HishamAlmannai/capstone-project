@@ -11,13 +11,12 @@ import useStore from '../src/services/useStore';
 
 export async function getStaticProps() {
 	const tasks = await getTasks();
-	const archiveTasks = await getArchives();
-
+	const archives = await getArchives();
 	return {
 		props: {
 			fallback: {
 				'/api/tasks': tasks,
-				'/api/archives': archiveTasks,
+				'/api/archives': archives,
 			},
 		},
 	};

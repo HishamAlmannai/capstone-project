@@ -122,7 +122,7 @@ const useStore = create(set => ({
 		try {
 			const response = await fetch('/api/archives');
 			const data = await response.json();
-			set({ Archives: data });
+			set({ archives: data });
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}

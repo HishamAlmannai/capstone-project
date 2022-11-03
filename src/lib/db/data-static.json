@@ -2,7 +2,7 @@
   {
     "name": "The tasks are displayed, labeled by 'ToDo:'",
     "done": true,
-    "dueDate": "2025-03-12:08:44Z",
+    "dueDate": "2025-03-12T08:44:00.000+00:00",
     "doneDate": "2022-03-22T11:02:44Z",
     "startDate": "2022-03-18T11:01:44Z"
   },
