@@ -1,13 +1,12 @@
-import Button from '../src/components/Button/Button';
 import Graph from '../src/components/Graph/Graph';
 import { StyledCard } from '../styles/Card.styled';
 import TaskList from '../src/components/TaskList/TaskList';
 import Form from '../src/components/Form/Form';
-import useSWR, { SWRConfig } from 'swr';
+import Footer from '../src/components/Footer/Footer';
+import { SWRConfig } from 'swr';
 import swrFetcher from '../src/lib/swr-fetcher';
 import getTasks from '../src/services/get-tasks';
 import getArchives from '../src/services/get-archives';
-import useStore from '../src/services/useStore';
 
 export async function getStaticProps() {
 	const tasks = await getTasks();
@@ -23,36 +22,23 @@ export async function getStaticProps() {
 }
 
 export default function Home({ fallback }) {
-	const archiveTasks = useStore(state => state.archiveTasks);
-
-	const { data: archives, error } = useSWR('/api/archives');
-	const { data: tasks } = useSWR('/api/tasks');
-	if (error) {
-		return <p>Error: {error.message}</p>;
-	}
-	if (!archives) {
-		return <p>loading...</p>;
-	}
 	return (
-		<main>
-			<SWRConfig value={{ fetcher: swrFetcher, fallback }}>
-				<h1 hidden>ToNotDo</h1>
-				<h2 hidden>Create</h2>
-				<Form editMode={false} />
-				<h2 hidden>ToDo</h2>
-				<TaskList />
-				<StyledCard className="graph">
-					<Graph />
-				</StyledCard>
-				<Button
-					class="footer"
-					onClick={() => {
-						archiveTasks(tasks);
-					}}
-				>
-					Archive checked
-				</Button>
-			</SWRConfig>
-		</main>
+		<>
+			<header>
+				<h1 hidden>toNotDo</h1>
+			</header>
+			<main>
+				<SWRConfig value={{ fetcher: swrFetcher, fallback }}>
+					<h2 hidden>Create</h2>
+					<Form editMode={false} />
+					<h2 hidden>ToDo</h2>
+					<TaskList />
+					<StyledCard className="graph">
+						<Graph />
+					</StyledCard>
+				</SWRConfig>
+			</main>
+			<Footer />
+		</>
 	);
 }

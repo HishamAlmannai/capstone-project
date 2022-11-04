@@ -1,20 +1,7 @@
 import create from 'zustand';
-import produce from 'immer';
 import { mutate } from 'swr';
 
-const useStore = create(set => ({
-	tasks: [],
-	fetchTasks: async () => {
-		try {
-			const response = await fetch('/api/tasks');
-			const data = await response.json();
-			set({ tasks: data });
-		} catch (error) {
-			console.error(`Uppps das war ein Fehler: ${error}`);
-		}
-		mutate('/api/tasks');
-	},
-
+const useStore = create(() => ({
 	addTask: async (name, dueDate) => {
 		const newTask = {
 			name: name,
@@ -29,11 +16,6 @@ const useStore = create(set => ({
 				body: JSON.stringify(newTask),
 			});
 			await response.json();
-			set(
-				produce(draft => {
-					draft.tasks.push({ ...newTask });
-				})
-			);
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
@@ -52,17 +34,6 @@ const useStore = create(set => ({
 				body: JSON.stringify(editedTask),
 			});
 			await response.json();
-			set(state => {
-				return {
-					tasks: state.tasks.map(task => {
-						if (task.id === id) {
-							return { ...task, done: !done, doneDate: doneDate };
-						} else {
-							return task;
-						}
-					}),
-				};
-			});
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
@@ -75,11 +46,6 @@ const useStore = create(set => ({
 				method: 'DELETE',
 			});
 			await response.json();
-			set(state => {
-				return {
-					tasks: state.tasks.filter(task => task.id !== id),
-				};
-			});
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
@@ -97,20 +63,6 @@ const useStore = create(set => ({
 				body: JSON.stringify(editedTask),
 			});
 			await response.json();
-			set(state => {
-				return {
-					tasks: state.tasks.map(task =>
-						task.id === id
-							? {
-									...task,
-									name: inputValue,
-									dueDate: new Date(dueDateValue),
-							  }
-							: task
-					),
-					entryToUpdate: null,
-				};
-			});
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
@@ -125,12 +77,6 @@ const useStore = create(set => ({
 				body: JSON.stringify(archivedTasks),
 			});
 			await response.json();
-			set(state => {
-				return {
-					archives: state.tasks.filter(task => task.done),
-					tasks: state.tasks.filter(task => !task.done),
-				};
-			});
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}

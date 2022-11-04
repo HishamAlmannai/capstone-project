@@ -24,8 +24,8 @@ const GlobalStyle = createGlobalStyle`
 }
 
  html {
-       background-color: var(--primary-background-color);
-       font-style: var(--primary-font-face)
+    background-color: var(--primary-background-color);
+    font-style: var(--primary-font-face)
   }; 
 
  main {
@@ -35,13 +35,25 @@ const GlobalStyle = createGlobalStyle`
     align-items: center ;
   }
 
+  footer {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center ;
+  }
+
+
  ul {
-      list-style-type: none;
-      margin: 0; 
-      padding: 0; 
-      width: 100vw
-    }
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background-color: var(--primary-background-color);
+    transform: translateY(0);
+    width: 100%;
+    list-style-type: none;
+    margin: 0; 
+    padding: 0; 
+  }
 `;
-
 export default GlobalStyle;
