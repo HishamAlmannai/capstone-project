@@ -10,7 +10,6 @@ export default async function handler(req, res) {
 			message: 'task deleted',
 			entry: deletedTask,
 		});
-		[];
 	} else if (req.method === 'PUT') {
 		const newTaskData = JSON.parse(req.body);
 		await dbConnect();
@@ -21,8 +20,5 @@ export default async function handler(req, res) {
 			message: 'task edited',
 			entry: updatedTask,
 		});
-	} else {
-		const singleTask = await Task.findById(id);
-		res.status(200).json(singleTask);
 	}
 }

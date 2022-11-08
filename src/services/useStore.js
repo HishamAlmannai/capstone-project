@@ -73,7 +73,7 @@ const useStore = create(() => ({
 		const archivedTasks = tasks.filter(task => task.done);
 		try {
 			const response = await fetch('/api/archive', {
-				method: 'POST',
+				method: 'PUT',
 				body: JSON.stringify(archivedTasks),
 			});
 			await response.json();

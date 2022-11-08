@@ -3,13 +3,11 @@ import Archive from '../../src/lib/models/Archive';
 import Task from '../../src/lib/models/Task';
 
 export default async function handler(req, res) {
-	if (req.method === 'POST') {
+	if (req.method === 'PUT') {
 		const oldTaskData = JSON.parse(req.body);
 		await dbConnect();
 		await Archive.insertMany(oldTaskData);
 		const deleteMany = await Task.deleteMany({ done: true });
-
-		console.log(req.body);
 		res.status(200).json({
 			message: 'tasks archived',
 			entry: deleteMany,
