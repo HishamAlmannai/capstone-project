@@ -30,7 +30,7 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 	}
 
 	if (handleSubmit) {
-		onSubmit(event, inputValue, dueDateValue);
+		onSubmit(inputValue, dueDateValue);
 	}
 
 	function onSubmit(event, inputValue, dueDateValue) {

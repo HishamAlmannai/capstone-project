@@ -8,11 +8,11 @@ export default async function getArchives() {
 	return archives.map(({ id, name, done, dueDate, doneDate, startDate }) => {
 		return {
 			id,
-			name,
-			done,
-			dueDate: String(dueDate),
-			doneDate: String(doneDate),
-			startDate: String(startDate),
+			name: String(name),
+			done: Boolean(done),
+			dueDate: Date(dueDate),
+			doneDate: Date(doneDate),
+			startDate: Date(startDate),
 		};
 	});
 }
