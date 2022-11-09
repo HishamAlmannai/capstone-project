@@ -4,7 +4,7 @@ const url = process.env.DB_CONNECTION;
 
 export function dbConnect() {
 	try {
-		mongoose.connect(String(url), {
+		mongoose.connect(url, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 		});
