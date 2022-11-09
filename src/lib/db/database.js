@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const url = process.env.DB_CONNECTION;
+const url = String(process.env.DB_CONNECTION);
 
 export async function dbConnect() {
 	try {
