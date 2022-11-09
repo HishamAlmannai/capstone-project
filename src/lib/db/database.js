@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
 const url = process.env.DB_CONNECTION;
-console.log(url);
+
 export async function dbConnect() {
 	try {
-		await mongoose.connect(url);
+		await mongoose.connect(url, { useNewUrlParser: true });
 		console.log('Connected to MongoDB');
 	} catch (error) {
 		console.error('ERROR, could not connect', error.message);
