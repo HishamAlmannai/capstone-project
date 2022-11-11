@@ -6,7 +6,7 @@ import { StyledInput } from '../../../styles/Input.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 
-export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
+export default function Form({ id, editMode, exitEditMode, handleSubmit }) {
 	const [inputValue, setInputValue] = useState('');
 	const [dueDateValue, setDueDateValue] = useState('');
 	const addTask = useStore(state => state.addTask);
@@ -28,9 +28,8 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 	if (!tasks) {
 		return <p>loading...</p>;
 	}
-
 	if (handleSubmit) {
-		onSubmit(inputValue, dueDateValue);
+		onSubmit(event, inputValue, dueDateValue);
 	}
 
 	function onSubmit(event, inputValue, dueDateValue) {
