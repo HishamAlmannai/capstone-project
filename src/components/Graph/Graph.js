@@ -1,5 +1,5 @@
 import React from 'react';
-import useStore from '../../services/useStore';
+import useSWR from 'swr';
 import { Chart, LineElement, LinearScale, CategoryScale, BarElement, PointElement } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { format } from 'date-fns';
@@ -8,7 +8,13 @@ import { orderBy } from 'lodash';
 export default function Graph() {
 	Chart.register(LineElement, LinearScale, CategoryScale, BarElement, PointElement);
 
-	const tasks = useStore(state => state.tasks);
+	const { data: tasks, error } = useSWR('/api/tasks');
+	if (error) {
+		return <p>Error: {error.message}</p>;
+	}
+	if (!tasks) {
+		return <p>loading...</p>;
+	}
 
 	const cleanPastDates = tasks
 		.flatMap(task => [task.startDate, task.doneDate])
@@ -25,6 +31,7 @@ export default function Graph() {
 	const substractTasksDone = shiftTasksCountAtDate.map(
 		(number, index) => number - tasksDoneAtDate[index]
 	);
+
 	let Dates = orderedPastDates.map(date => format(new Date(date), 'k:mm'));
 
 	const data = {

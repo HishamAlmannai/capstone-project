@@ -1,24 +1,33 @@
+import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
+import useSWR from 'swr';
 import { StyledForm } from '../../../styles/Form.styled';
 import { StyledInput } from '../../../styles/Input.styled';
 import useStore from '../../services/useStore';
 import Button from '../Button/Button';
 
-export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
+export default function Form({ id, editMode, exitEditMode, handleSubmit }) {
 	const [inputValue, setInputValue] = useState('');
 	const [dueDateValue, setDueDateValue] = useState('');
 	const addTask = useStore(state => state.addTask);
-	const tasks = useStore(state => state.tasks);
 	const updateTask = useStore(state => state.updateTask);
+
+	const { data: tasks, error } = useSWR('/api/tasks');
 
 	useEffect(() => {
 		if (editMode) {
 			const task = tasks.find(element => element.id === id);
 			setInputValue(task.name);
-			setDueDateValue(task.dueDate);
+			setDueDateValue(format(new Date(task.dueDate), 'yyyy-MM-dd'));
 		}
-	}, []);
+	}, [editMode, id, tasks]);
 
+	if (error) {
+		return <p>Error: {error.message}</p>;
+	}
+	if (!tasks) {
+		return <p>loading...</p>;
+	}
 	if (handleSubmit) {
 		onSubmit(event, inputValue, dueDateValue);
 	}
@@ -97,7 +106,6 @@ export default function Form({ editMode, exitEditMode, id, handleSubmit }) {
 							setInputValue(event.target.value);
 						}}
 					/>
-
 					<StyledInput
 						required
 						type="date"

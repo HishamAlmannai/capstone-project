@@ -1,71 +1,87 @@
 import create from 'zustand';
-import { nanoid } from 'nanoid';
-import { persist } from 'zustand/middleware';
-import { data } from '../lib/data';
+import { mutate } from 'swr';
 
-const useStore = create(
-	persist(
-		set => ({
-			tasks: data,
-			archive: [],
+const useStore = create(() => ({
+	addTask: async (name, dueDate) => {
+		const newTask = {
+			name: name,
+			done: false,
+			dueDate: dueDate,
+			doneDate: new Date(0),
+			startDate: new Date(),
+		};
+		try {
+			const response = await fetch('/api/task/create', {
+				method: 'POST',
+				body: JSON.stringify(newTask),
+			});
+			await response.json();
+		} catch (error) {
+			console.error(`Upps das war ein Fehler: ${error}`);
+		}
+		mutate('/api/tasks');
+	},
 
-			addTask: (task, dueDate) => {
-				set(state => {
-					return {
-						tasks: [
-							{
-								id: nanoid(),
-								name: task,
-								done: false,
-								startDate: new Date(),
-								dueDate,
-							},
-							...state.tasks,
-						],
-					};
-				});
-			},
-			checkTask: id => {
-				set(state => {
-					return {
-						tasks: state.tasks.map(task => {
-							if (task.id === id) {
-								return { ...task, done: !task.done, doneDate: new Date() };
-							} else {
-								return task;
-							}
-						}),
-					};
-				});
-			},
+	checkTask: async (id, done) => {
+		const doneDate = done ? new Date(0) : new Date();
+		const editedTask = {
+			done: !done,
+			doneDate: doneDate,
+		};
+		try {
+			const response = await fetch('/api/task/' + id, {
+				method: 'PUT',
+				body: JSON.stringify(editedTask),
+			});
+			await response.json();
+		} catch (error) {
+			console.error(`Upps das war ein Fehler: ${error}`);
+		}
+		mutate('/api/tasks');
+	},
 
-			deleteTask: id => {
-				set(state => {
-					return {
-						tasks: state.tasks.filter(task => task.id !== id),
-					};
-				});
-			},
-			archiveTasks: () => {
-				set(state => {
-					return {
-						archive: state.tasks.filter(task => task.done),
-						tasks: state.tasks.filter(task => !task.done),
-					};
-				});
-			},
-			updateTask: (id, name, dueDate) => {
-				set(state => {
-					return {
-						tasks: state.tasks.map(task =>
-							task.id === id ? { ...task, name, dueDate } : task
-						),
-					};
-				});
-			},
-		}),
-		{ name: 'local tasks' }
-	)
-);
+	deleteTask: async id => {
+		try {
+			const response = await fetch('/api/task/' + id, {
+				method: 'DELETE',
+			});
+			await response.json();
+		} catch (error) {
+			console.error(`Upps das war ein Fehler: ${error}`);
+		}
+		mutate('/api/tasks');
+	},
+
+	updateTask: async (id, inputValue, dueDateValue) => {
+		const editedTask = {
+			name: inputValue,
+			dueDate: dueDateValue,
+		};
+		try {
+			const response = await fetch('/api/task/' + id, {
+				method: 'PUT',
+				body: JSON.stringify(editedTask),
+			});
+			await response.json();
+		} catch (error) {
+			console.error(`Upps das war ein Fehler: ${error}`);
+		}
+		mutate('/api/tasks');
+	},
+
+	archiveTasks: async tasks => {
+		const archivedTasks = tasks.filter(task => task.done);
+		try {
+			const response = await fetch('/api/archive', {
+				method: 'PUT',
+				body: JSON.stringify(archivedTasks),
+			});
+			await response.json();
+		} catch (error) {
+			console.error(`Upps das war ein Fehler: ${error}`);
+		}
+		mutate('/api/tasks');
+	},
+}));
 
 export default useStore;

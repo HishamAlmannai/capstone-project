@@ -1,38 +1,44 @@
-import dynamic from 'next/dynamic';
-import Button from '../src/components/Button/Button';
 import Graph from '../src/components/Graph/Graph';
-import useStore from '../src/services/useStore';
 import { StyledCard } from '../styles/Card.styled';
+import TaskList from '../src/components/TaskList/TaskList';
+import Form from '../src/components/Form/Form';
+import Footer from '../src/components/Footer/Footer';
+import { SWRConfig } from 'swr';
+import swrFetcher from '../src/lib/swr-fetcher';
+import getTasks from '../src/services/get-tasks';
+import getArchives from '../src/services/get-archives';
 
-export default function Home() {
-	//delete on mongoDB integration, only used for persist/localStorage (dynamic import with NO SSR form next.js docu --> https://nextjs.org/docs/advanced-features/dynamic-import)
-	const TaskList = dynamic(() => import('../src/components/TaskList/TaskList'), {
-		ssr: false, // This line is important.
-	});
-	const Form = dynamic(() => import('../src/components/Form/Form'), {
-		ssr: false, // This line is important.
-	});
+export async function getStaticProps() {
+	const tasks = await getTasks();
+	const archives = await getArchives();
+	return {
+		props: {
+			fallback: {
+				'/api/tasks': tasks,
+				'/api/archives': archives,
+			},
+		},
+	};
+}
 
-	const archiveTasks = useStore(state => state.archiveTasks);
-
+export default function Home({ fallback }) {
 	return (
-		<main>
-			<h1 hidden>ToNotDo</h1>
-			<h2 hidden>Create</h2>
-			<Form editMode={false} />
-			<h2 hidden>ToDo</h2>
-			<TaskList />
-			<StyledCard className="graph">
-				<Graph />
-			</StyledCard>
-			<Button
-				class="footer"
-				onClick={() => {
-					archiveTasks();
-				}}
-			>
-				Archive checked
-			</Button>
-		</main>
+		<>
+			<header>
+				<h1 hidden>toNotDo</h1>
+			</header>
+			<main>
+				<SWRConfig value={{ fetcher: swrFetcher, fallback }}>
+					<h2 hidden>Create</h2>
+					<Form editMode={false} />
+					<h2 hidden>ToDo</h2>
+					<TaskList />
+					<StyledCard className="graph">
+						<Graph />
+					</StyledCard>
+				</SWRConfig>
+			</main>
+			<Footer />
+		</>
 	);
 }
