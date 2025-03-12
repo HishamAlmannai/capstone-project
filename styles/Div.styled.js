@@ -11,4 +11,9 @@ export const StyledDiv = styled.div`
 		align-items: center;
 		justify-content: space-between;
 	}
+	&.graph {
+		padding: 2rem;
+		margin-top: -10px;
+		width: 100%;
+	}
 `;
